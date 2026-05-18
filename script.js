@@ -93,18 +93,31 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
 
 // MOBILE — news photo active state on scroll
 if (window.matchMedia("(max-width: 768px)").matches) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      entry.target.classList.toggle("in-view", entry.isIntersecting);
-    });
-  }, {
-    rootMargin: "-42% 0px -42% 0px",
-    threshold: 0
-  });
+  function updateActiveCard() {
+    const cards = document.querySelectorAll(".news-card");
+    const centerY = window.innerHeight / 2;
 
-  document.querySelectorAll(".news-card").forEach(card => {
-    observer.observe(card);
-  });
+    let closestCard = null;
+    let closestDistance = Infinity;
+
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distance = Math.abs(cardCenter - centerY);
+
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestCard = card;
+      }
+    });
+
+    cards.forEach(card => {
+      card.classList.toggle("in-view", card === closestCard);
+    });
+  }
+
+  window.addEventListener("scroll", updateActiveCard, { passive: true });
+  updateActiveCard();
 }
 
 window.addEventListener('load', () => {
