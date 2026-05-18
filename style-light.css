@@ -589,7 +589,7 @@ footer {
   }
   .hero-stat { flex: 1; padding: 14px 4px; min-width: 0; width: auto; text-align: center; }
   .hero-stat .num { font-size: 24px; min-width: 0; }
-  .hero-stat .lbl { font-size: 11px; letter-spacing: 0.12em; margin-top: 3px; }
+  .hero-stat .lbl { font-size: 17px; letter-spacing: 0.12em; margin-top: 3px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
   .stat-num { font-size: 32px; }
