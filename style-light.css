@@ -624,3 +624,9 @@ footer {
   .hero-stat:nth-child(2n) { border-right: 1px solid var(--green-line); }
   .hero-stat:nth-child(-n+2) { border-bottom: none; }
 }
+@media (max-width: 768px) {
+  .news-card.in-view .news-thumb img {
+    filter: saturate(1) brightness(1);
+    transform: scale(1.03);
+  }
+}

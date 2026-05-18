@@ -88,3 +88,19 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
     });
   });
 });
+
+// MOBILE — news photo active state on scroll
+if (window.matchMedia("(max-width: 768px)").matches) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle("in-view", entry.isIntersecting);
+    });
+  }, {
+    rootMargin: "-25% 0px -25% 0px",
+    threshold: 0
+  });
+
+  document.querySelectorAll(".news-card").forEach(card => {
+    observer.observe(card);
+  });
+}
