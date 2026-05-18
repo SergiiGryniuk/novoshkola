@@ -15,12 +15,13 @@ tl.to("#heroTag",   { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" })
 
 // HERO COUNT-UP
 function countUp(el, target, duration) {
+  const suffix = el.dataset.suffix || '';
   let start = 0;
   const step = target / (duration / 16);
   const timer = setInterval(() => {
     start += step;
     if (start >= target) { start = target; clearInterval(timer); }
-    el.textContent = Math.floor(start).toLocaleString();
+    el.textContent = Math.floor(start).toLocaleString('uk-UA') + suffix;
   }, 16);
 }
 setTimeout(() => {
