@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novopecherska School — Premium Education Since 2007</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a class="logo" href="#" style="background: rgba(12,17,13,0.55); border-radius: 6px; padding: 6px 12px; backdrop-filter: blur(8px);">
+    <img src="img/image1.png" alt="Novopecherska School">
+  </a>
+  <nav>
+    <a href="#about">About School</a>
+    <a href="#programs">Programs</a>
+    <a href="#enrolment">Enrolment</a>
+    <a href="#news">News</a>
+    <a href="#contacts">Contacts</a>
+    <span class="nav-lang">UA / <span>EN</span></span>
+    <a href="https://school-today.com/Account/Novoshkola" class="btn-primary">Login</a>
+  </nav>
+  <div class="hamburger" id="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About School</a>
+  <a href="#programs" onclick="document.getElementById('mobileMenu').classList.remove('open')">Programs</a>
+  <a href="#enrolment" onclick="document.getElementById('mobileMenu').classList.remove('open')">Enrolment</a>
+  <a href="#news" onclick="document.getElementById('mobileMenu').classList.remove('open')">News</a>
+  <a href="#contacts" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contacts</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg">
+    <video autoplay muted loop playsinline id="heroVideo"
+      style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
+      <source src="video/hero-video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag" id="heroTag">Premium Education Since 2007</span>
+    <h1 id="heroTitle">Where Future<br><span style="color:var(--green);font-weight:600;">Leaders</span><br>Are Nurtured</h1>
+    <p id="heroSub">Novopecherska School provides exceptional education that combines academic excellence with character development, preparing students to thrive in the 21st century.</p>
+    <div class="hero-ctas" id="heroCtas">
+      <a href="https://novoshkola.microsoftcrmportals.com/contact-us/" class="btn-primary">Apply for Enrolment</a>
+      <a href="#about" class="btn-outline">Discover More</a>
+    </div>
+  </div>
+  <div class="hero-stats" id="heroStats">
+    <div class="hero-stat">
+      <span class="num" data-target="850">0</span>
+      <span class="lbl">Students</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-target="120">0</span>
+      <span class="lbl">Teachers</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-target="18">0</span>
+      <span class="lbl">Years</span>
+    </div>
+    <div class="hero-stat">
+      <span class="num" data-target="9585">0</span>
+      <span class="lbl">m² Campus</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item fade-up">
+    <span class="stat-num" data-target="850">0</span>
+    <span class="stat-label">Students Enrolled</span>
+  </div>
+  <div class="stat-item fade-up">
+    <span class="stat-num" data-target="120">0</span>
+    <span class="stat-label">Expert Teachers</span>
+  </div>
+  <div class="stat-item fade-up">
+    <span class="stat-num" data-target="30">0</span>
+    <span class="stat-label">Clubs & Electives</span>
+  </div>
+  <div class="stat-item fade-up">
+    <span class="stat-num" data-target="18">0</span>
+    <span class="stat-label">Years of Excellence</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <span class="section-tag fade-up">About the School</span>
+      <h2 class="section-title fade-up">A Place Where<br>Every Child Becomes<br>a <span style="color:var(--green);font-weight:600;">Leader</span></h2>
+      <div class="divider fade-up"></div>
+      <p class="section-sub fade-up">Novopecherska School offers students an educational experience that fully unlocks their learning potential. Our graduates become independent citizens with broad perspectives, critical thinkers, and dedicated developers of their own talents.</p>
+      <div class="awards">
+        <div class="award-item fade-up">
+          <span class="award-icon">✦</span>
+          <div class="award-text">
+            <strong>IIDA Global Excellence Awards 2014</strong>
+            Winner in "Education" category — Maison&amp;Objet, Paris
+          </div>
+        </div>
+        <div class="award-item fade-up">
+          <span class="award-icon">✦</span>
+          <div class="award-text">
+            <strong>Inter'year 2015 — Grand Prix</strong>
+            First Prize in "Public Building Interiors" &amp; Grand Prix
+          </div>
+        </div>
+        <div class="award-item fade-up">
+          <span class="award-icon">✦</span>
+          <div class="award-text">
+            <strong>DreamDesign Interior Studio</strong>
+            9,585 m² of award-winning educational space
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-photos-v2">
+      <figure class="about-photo about-photo--main">
+        <img src="img/image2.jpg" alt="School Atrium">
+      </figure>
+      <figure class="about-photo">
+        <img src="img/image3.jpg" alt="Library">
+      </figure>
+      <figure class="about-photo">
+        <img src="img/image4.jpg" alt="Sports Hall">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS / CLUBS -->
+<section class="programs-section" id="programs">
+  <span class="section-tag fade-up">Extracurriculars</span>
+  <h2 class="section-title fade-up">30+ Clubs &amp;<br><span style="color:var(--green);font-weight:600;">Programs</span></h2>
+  <p class="section-sub fade-up">After the academic part of the day, students have time for clubs and electives — across creativity, technology, and sport.</p>
+
+  <div class="clubs-tabs">
+    <button class="tab-btn active" data-tab="creative">Creative Arts</button>
+    <button class="tab-btn" data-tab="tech">Technology</button>
+    <button class="tab-btn" data-tab="sport">Sport</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-creative">
+    <div class="clubs-grid">
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Felting (Валяння)</div><span class="club-grades">Grades 1–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Painting</div><span class="club-grades">Grades 1–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Speaking Club</div><span class="club-grades">Grades 1–4 · Native Speaker</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Pottery</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Acting Masterclass</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Theatre Improv</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Paper Fantasy</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Fashion Studio</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Art Photography</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Vocal</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Guitar</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Literary Club</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Debate Club</div><span class="club-grades">Grades 8–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Culinary Arts</div><span class="club-grades">Grades 1–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Creative</span><div class="club-name">Board Games</div><span class="club-grades">Grades 1–4 &amp; 5–11</span></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-tech">
+    <div class="clubs-grid">
+      <div class="club-card fade-up"><span class="club-cat">Technology</span><div class="club-name">3D Pen</div><span class="club-grades">Grades 3–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Technology</span><div class="club-name">Techno-Cardboard</div><span class="club-grades">Grades 3–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Technology</span><div class="club-name">Modelling &amp; Design</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Technology</span><div class="club-name">Robotics (LEGO EV3)</div><span class="club-grades">Grades 5–6</span></div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-sport">
+    <div class="clubs-grid">
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Basketball</div><span class="club-grades">Grades 2–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Football</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Ballroom Dancing</div><span class="club-grades">Grades 1–4 · World Champion Coach</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Rhythmic Gymnastics</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Hip Hop</div><span class="club-grades">Grades 3–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Modern Dance</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Cheerleading</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Table Tennis</div><span class="club-grades">Grades 3–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Badminton</div><span class="club-grades">Grades 5–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Wrestling</div><span class="club-grades">Grades 1–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Chess</div><span class="club-grades">Grades 1–11</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">Tourism &amp; Climbing</div><span class="club-grades">Grades 2–4</span></div>
+      <div class="club-card fade-up"><span class="club-cat">Sport</span><div class="club-name">GYM</div><span class="club-grades">Grades 5–11</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ENROLMENT -->
+<section id="enrolment">
+  <span class="section-tag fade-up">Admissions</span>
+  <h2 class="section-title fade-up">Begin the<br><span style="color:var(--green);font-weight:600;">Journey</span></h2>
+  <p class="section-sub fade-up">Dear parents, if you want your child to become a student of Novopecherska School, please fill in the enrolment form. Choose the path that fits your child.</p>
+  <div class="enrolment-grid">
+    <a class="enrol-card fade-up" href="https://novoshkola.com.ua/en/entry-to-school-kdp">
+      <span class="enrol-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="12" r="6" stroke="currentColor" stroke-width="2"/><path d="M10 34c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 24v6M17 28h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <div class="enrol-title">Preschool</div>
+      <p class="enrol-desc">Early education with a caring and nurturing environment</p>
+      <span class="enrol-link">Learn more →</span>
+    </a>
+    <a class="enrol-card fade-up" href="https://novoshkola.com.ua/en/entry-to-school-1st">
+      <span class="enrol-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6l3.09 9.51H33l-8.09 5.88 3.09 9.51L20 25.02l-8 5.88 3.09-9.51L7 15.51h9.91L20 6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+      <div class="enrol-title">Grade 1</div>
+      <p class="enrol-desc">First grade enrolment — the beginning of the school journey</p>
+      <span class="enrol-link">Learn more →</span>
+    </a>
+    <a class="enrol-card fade-up" href="https://novoshkola.com.ua/en/entry-to-school-2-11">
+      <span class="enrol-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 32V12M20 12C20 12 16 9 9 10v20c7-1 11 2 11 2M20 12c0 0 4-3 11-2v20c-7-1-11 2-11 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div class="enrol-title">Grades 2–10</div>
+      <p class="enrol-desc">Enrolment to secondary and high school programs</p>
+      <span class="enrol-link">Learn more →</span>
+    </a>
+    <a class="enrol-card fade-up" href="https://novoshkola.com.ua/en/cost">
+      <span class="enrol-icon"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 8l10 8-10 16L10 16l10-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M10 16h20" stroke="currentColor" stroke-width="2"/><path d="M15 16l5-8M25 16l-5-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+      <div class="enrol-title">Tuition Fee</div>
+      <p class="enrol-desc">Transparent pricing and scholarship program available</p>
+      <span class="enrol-link">View pricing →</span>
+    </a>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE -->
+<div class="infra-section">
+  <div class="inner">
+    <span class="section-tag fade-up">Campus</span>
+    <h2 class="section-title fade-up">World-Class<br><span style="color:var(--green);font-weight:600;">Infrastructure</span></h2>
+    <p class="section-sub fade-up">9,585 m² designed by international architects. Award-winning interiors by DreamDesign studio. A campus built for inspiration.</p>
+  </div>
+  <div class="infra-grid" style="padding: 0 48px; margin-top: 56px;">
+    <div class="infra-item large fade-up">
+      <img src="img/image5.jpg" alt="School Campus">
+      <div class="caption">Main Campus · 9,585 m²</div>
+    </div>
+    <div class="infra-item fade-up">
+      <img src="img/image6.jpg" alt="Library">
+      <div class="caption">Library</div>
+    </div>
+    <div class="infra-item fade-up">
+      <img src="img/image7.jpg" alt="Sports Hall">
+      <div class="caption">Sports Hall</div>
+    </div>
+    <div class="infra-item fade-up">
+      <img src="img/image8.jpg" alt="Dining Hall">
+      <div class="caption">Dining Hall</div>
+    </div>
+    <div class="infra-item fade-up">
+      <img src="img/image9.jpg" alt="Atrium">
+      <div class="caption">Atrium</div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <span class="section-tag fade-up">Community</span>
+  <h2 class="section-title fade-up">Voices of Our<br><span style="color:var(--green);font-weight:600;">Families</span></h2>
+  <div class="reviews-track">
+    <div class="review-card fade-up">
+      <p class="review-text">Ще зовсім недавно я навчався в Новопечерській школі й, до речі, був одним із тих, хто прийшов до Школи, коли вона привітно відчинила свої двері вперше. Завдяки знанням і досвіду, які я отримав у Школі, мені вдалося вступити до двох найкращих університетів Канади: University of Toronto та The University of British Columbia.</p>
+      <div class="review-author">
+        <div class="review-avatar">Г</div>
+        <div>
+          <div class="review-name">Григорій Овчаренко</div>
+          <div class="review-role">Випускник 2021/2022 · University of Toronto</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up">
+      <p class="review-text">Новопечерська школа навчила мене того, що спільнота, в якій ти перебуваєш під час навчання, відіграє надважливу роль. Я обрав факультет КПІ, куди вступають хлопці і дівчата з високими балами ЗНО. Мої однокурсники дуже розумні, амбітні й ініціативні, і в цій атмосфері хочеться постійно розвиватись — як і в Новопечерці!</p>
+      <div class="review-author">
+        <div class="review-avatar">К</div>
+        <div>
+          <div class="review-name">Кирил Гіловянц</div>
+          <div class="review-role">Випускник 2019/2020 · КПІ</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up">
+      <p class="review-text">Я вдячна Школі за стійкі цінності, які не на папері, а в серцях і головах професійної команди. Школа іде в ногу із сім'єю, а іноді і скеровує сім'ю, легко підштовхуючи усіх разом угору і вперед. Четверо дітей нашої родини вже відвідують Школу та КДП, і я не пригадаю жодного разу, коли б діти не мчали до Школи.</p>
+      <div class="review-author">
+        <div class="review-avatar">О</div>
+        <div>
+          <div class="review-name">Оксана Самусєва</div>
+          <div class="review-role">Мама учнів початкової та середньої школи</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card fade-up">
+      <p class="review-text">Новопечерська школа — це той сприятливий простір для особистісного зростання, якого нам, дорослим, у свій час так не вистачало. Школа — це не лише міцні знання, але і розвиток, взаєморозуміння та дружні відносини між учнями та вчителями. У Школі кожен учень — лідер, інноватор, якого заохочують до реалізації власних мрій.</p>
+      <div class="review-author">
+        <div class="review-avatar">Д</div>
+        <div>
+          <div class="review-name">Батьки учнів</div>
+          <div class="review-role">Novopecherska School Community</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section id="news">
+  <span class="section-tag fade-up">Latest</span>
+  <h2 class="section-title fade-up">School <span style="color:var(--green);font-weight:600;">News</span></h2>
+  <div class="news-grid">
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/nezvychniy_urok_himii">
+      <div class="news-thumb"><img src="img/image10.jpg" alt="Detective Investigation in Chemistry Class" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">16 Feb 2026</div>
+        <div class="news-title">Detective Investigation in Chemistry Class</div>
+        <p class="news-excerpt">How to find a real 'killer' of mannequins — an unconventional approach to chemistry education.</p>
+      </div>
+    </a>
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/Rizdvyanij_yarmarok">
+      <div class="news-thumb"><img src="img/image11.jpg" alt="New Year and Christmas Fair" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">30 Dec 2025</div>
+        <div class="news-title">New Year and Christmas Fair</div>
+        <p class="news-excerpt">A charity school fair was traditionally held in Novopechersk, bringing the community together.</p>
+      </div>
+    </a>
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/Novorichne_show_2025">
+      <div class="news-thumb"><img src="img/image12.jpg" alt="The Magic of Christmas Unites Us!" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">30 Dec 2025</div>
+        <div class="news-title">The Magic of Christmas Unites Us!</div>
+        <p class="news-excerpt">The traditional charity New Year's show by students and team of Novopecherska.</p>
+      </div>
+    </a>
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/NOVOTIMES_gazeta">
+      <div class="news-thumb"><img src="img/image13.jpg" alt="NOVOTIMES — School Newspaper" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">30 Dec 2025</div>
+        <div class="news-title">NOVOTIMES — School Newspaper</div>
+        <p class="news-excerpt">School newspaper created by students of Novopecherska School — news, facts, interviews.</p>
+      </div>
+    </a>
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/World_Cup_of_Majorette_Sport_2025">
+      <div class="news-thumb"><img src="img/image14.jpg" alt="World Championship in Majorette Sport" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">30 Dec 2025</div>
+        <div class="news-title">World Championship in Majorette Sport</div>
+        <p class="news-excerpt">The incredible results of the students of Novopecherska on the world stage.</p>
+      </div>
+    </a>
+    <a class="news-card fade-up" href="https://novoshkola.com.ua/en/news/olimpiada_z_mineccraft">
+      <div class="news-thumb"><img src="img/image15.jpg" alt="Minecraft Olympics" loading="lazy"></div>
+      <div class="news-body">
+        <div class="news-date">29 Dec 2025</div>
+        <div class="news-title">Minecraft Olympics</div>
+        <p class="news-excerpt">In Novopechersk, it has become a tradition to hold a Minecraft Olympics twice a year.</p>
+      </div>
+    </a>
+  </div>
+  <a href="https://novoshkola.com.ua/en/news/" class="news-more fade-up">View all news →</a>
+</section>
+
+
+<!-- GOOGLE MAP -->
+<section style="padding: 0; margin: 0;">
+  <div style="position:relative;">
+    <div style="position:absolute; top:0; left:0; right:0; z-index:2; padding: 40px 48px; pointer-events:none;">
+      <span style="font-family:var(--font-body); font-size:11px; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; color:var(--green);">Find Us</span>
+      <h2 style="font-family:var(--font-display); font-size:clamp(28px,3vw,44px); font-weight:400; color:var(--text); margin-top:12px; text-shadow: 0 2px 12px rgba(0,0,0,0.8);">Novopecherska District,<br><span style="color:var(--green);font-weight:600;">Kyiv</span></h2>
+    </div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.066!2d30.5597!3d50.4138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce8b97dbabf1%3A0x2b6fa6a7c4e1d0a!2z0J3QvtCy0L7Qv9C10YfQtdGA0YHRjNC60LAg0YjQutC-0LvQsA!5e0!3m2!1suk!2sua!4v1716000000000!5m2!1suk!2sua"
+      width="100%" height="480"
+      style="border:0; display:block; filter: grayscale(100%) invert(92%) hue-rotate(180deg) brightness(0.85) contrast(0.9);"
+      allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+    <div style="position:absolute; inset:0; pointer-events:none; box-shadow: inset 0 0 80px rgba(12,17,13,0.5);"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacts">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="img/image16.png" alt="Novopecherska School">
+      <p>Novopecherska School provides exceptional education that combines academic excellence with character development since 2007.</p>
+    </div>
+    <div class="footer-col">
+      <h4>About School</h4>
+      <a href="https://novoshkola.com.ua/en/handbook-philosophy-values/">Our Values</a>
+      <a href="https://novoshkola.com.ua/en/team/">Our Team</a>
+      <a href="https://novoshkola.com.ua/en/infrastructure/">Infrastructure</a>
+      <a href="https://novoshkola.com.ua/en/electives/">Electives</a>
+      <a href="https://novoshkola.com.ua/en/philosophy/">Leader in Me</a>
+    </div>
+    <div class="footer-col">
+      <h4>Enrolment</h4>
+      <a href="https://novoshkola.microsoftcrmportals.com/contact-us/">Enrolment Form</a>
+      <a href="https://novoshkola.com.ua/en/enrolment/">Process</a>
+      <a href="https://novoshkola.com.ua/cost">Tuition Fee</a>
+      <a href="https://scholarship.novoshkola.com.ua/">Scholarship</a>
+      <a href="https://novoshkola.com.ua/blended-program">Blended Program</a>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <a href="https://novoshkola.com.ua/en/news/">News</a>
+      <a href="https://novoshkola.com.ua/en/handbook/">Handbook</a>
+      <a href="https://online.novoshkola.com.ua">Distance Education</a>
+      <a href="https://novoshkola.com.ua/payments">Payment</a>
+      <a href="https://school-today.com/Account/Novoshkola">Login</a>
+      <a href="https://osvitoria.org" target="_blank">Освіторія</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Novopecherska School. All rights reserved.</p>
+    <p style="color: var(--text-muted); font-size: 12px;">Novopecherska District, Kyiv, Ukraine</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
