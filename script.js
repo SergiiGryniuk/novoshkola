@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ ignoreMobileResize: true });
 
 // HERO ANIMATIONS
 gsap.to("#heroVideo", {
@@ -104,3 +105,7 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     observer.observe(card);
   });
 }
+
+window.addEventListener('load', () => {
+  ScrollTrigger.refresh();
+});
