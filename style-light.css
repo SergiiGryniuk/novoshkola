@@ -589,7 +589,7 @@ footer {
   }
   .hero-stat { flex: 1; padding: 14px 4px; min-width: 0; width: auto; text-align: center; }
   .hero-stat .num { font-size: 24px; min-width: 0; }
-  .hero-stat .lbl { font-size: 17px; letter-spacing: 0.12em; margin-top: 3px; }
+  .hero-stat .lbl { font-size: 9px; letter-spacing: 0.12em; margin-top: 3px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
   .stat-num { font-size: 32px; }
@@ -622,7 +622,7 @@ footer {
   .review-text { font-size: 17px; line-height: 1.65; }
   .news-excerpt { font-size: 17px; line-height: 1.65; }
   .section-sub { font-size: 17px; line-height: 1.65; }
-  .stat-label { font-size: 17px; }
+  .stat-label { font-size: 11px; }
   .award-text { font-size: 17px; line-height: 1.6; }
   .review-name { font-size: 17px; }
   .review-role { font-size: 17px; }
