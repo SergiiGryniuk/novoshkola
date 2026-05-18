@@ -535,7 +535,7 @@ footer {
   .hero-content { padding: 0 20px; max-width: 100%; flex: none; }
   .hero h1 { font-size: 38px; line-height: 1.05; }
   .hero p { font-size: 17px; line-height: 1.65; margin-bottom: 24px; max-width: 100%; }
-  .hero-tag { font-size: 10px; padding: 5px 10px; margin-bottom: 20px; letter-spacing: 0.18em; }
+  .hero-tag { font-size: 13px; padding: 5px 10px; margin-bottom: 20px; letter-spacing: 0.18em; }
   .hero-stats {
     position: static;
     flex-direction: row;
@@ -548,7 +548,7 @@ footer {
   }
   .hero-stat { flex: 1; padding: 14px 4px; min-width: 0; width: auto; text-align: center; }
   .hero-stat .num { font-size: 24px; min-width: 0; }
-  .hero-stat .lbl { font-size: 9px; letter-spacing: 0.12em; margin-top: 3px; }
+  .hero-stat .lbl { font-size: 13px; letter-spacing: 0.12em; margin-top: 3px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
   .stat-num { font-size: 32px; }
@@ -580,6 +580,18 @@ footer {
   .club-grades { font-size: 17px; line-height: 1.65; }
   .review-text { font-size: 17px; line-height: 1.65; }
   .news-excerpt { font-size: 17px; line-height: 1.65; }
+  .section-sub { font-size: 17px; line-height: 1.65; }
+  .award-text { font-size: 17px; line-height: 1.6; }
+  .review-name { font-size: 17px; }
+  .review-role { font-size: 17px; }
+  .footer-links a { font-size: 17px; }
+  .footer-brand p { font-size: 17px; line-height: 1.65; }
+  .footer-bottom p { font-size: 17px; }
+  .club-name { font-size: 17px; }
+  .enrol-link { font-size: 17px; }
+  .club-cat { font-size: 13px; }
+  .news-date { font-size: 13px; }
+  .footer-title { font-size: 13px; }
   .cta-sub { margin-bottom: 32px; }
   .news-card.in-view .news-thumb img {
     filter: saturate(1) brightness(1);
