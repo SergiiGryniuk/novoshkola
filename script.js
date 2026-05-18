@@ -97,7 +97,7 @@ if (window.matchMedia("(max-width: 768px)").matches) {
       entry.target.classList.toggle("in-view", entry.isIntersecting);
     });
   }, {
-    rootMargin: "-30% 0px -40% 0px",
+    rootMargin: "-40% 0px -40% 0px",
     threshold: 0
   });
 
