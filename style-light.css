@@ -387,11 +387,12 @@ section { padding: 120px 48px; }
   border-radius: var(--radius); padding: 40px;
   position: relative;
 }
-.review-card::before {
-  content: '"'; font-family: var(--font-display); font-size: 72px;
-  color: var(--green); opacity: 0.3; line-height: 0.6;
-  position: absolute; top: 32px; right: 32px;
+.review-quote {
+  position: absolute; pointer-events: none;
+  color: var(--green); opacity: 0.2;
 }
+.review-quote--open { top: 14px; left: 18px; }
+.review-quote--close { bottom: 14px; right: 18px; }
 .review-text {
   font-size: 14px; color: var(--text-dim); line-height: 1.85;
   margin-bottom: 28px;
