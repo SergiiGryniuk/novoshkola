@@ -191,7 +191,7 @@ section { padding: 120px 48px; }
 .about-photos-v2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 280px 200px;
+  grid-template-rows: 420px 200px;
   gap: 12px;
 }
 .about-photo {
