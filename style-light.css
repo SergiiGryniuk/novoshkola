@@ -230,7 +230,8 @@ section { padding: 120px 48px; }
 }
 .about-photos-v2 {
   display: grid; grid-template-columns: 1fr 1fr;
-  grid-template-rows: 260px 180px;
+  grid-template-rows: 25vw 17vw;
+  max-width: 100%;
   gap: 12px;
 }
 .about-photo {
@@ -249,7 +250,8 @@ section { padding: 120px 48px; }
 }
 .about-photo.is-revealed img { transform: scale(1); }
 .about-photo:hover img { transform: scale(1.04); }
-.about-photo--main { grid-column: 1 / -1; height: 280px; }
+.about-photo--main { grid-column: 1 / -1; height: auto; aspect-ratio: 16/7; }
+.about-photo:not(.about-photo--main) { height: auto; aspect-ratio: 4/3; }
 .about-photo::after {
   content: '';
   position: absolute; inset: auto 0 0 0;
