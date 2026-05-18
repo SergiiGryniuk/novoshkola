@@ -599,6 +599,18 @@ footer {
   .about-photos-v2 { grid-template-columns: 1fr; grid-template-rows: auto; gap: 14px; }
   .about-photo { height: 200px; }
   .about-photo--main { height: 240px; }
+  .cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .cta-actions .btn-primary,
+  .cta-actions .btn-outline {
+    text-align: center;
+    padding: 14px 24px;
+  }
+  .cta-sub { margin-bottom: 32px; }
 }
 @media (max-width: 480px) {
   .hero-ctas { flex-direction: column; }
