@@ -522,14 +522,22 @@ footer {
   .hamburger { display: flex; }
   header { padding: 16px 20px; }
   header.scrolled { padding: 12px 20px; }
-  .hero-content { padding: 0 20px; max-width: 100%; }
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 15px; margin-bottom: 32px; max-width: 92%; }
-  /* Stats stay anchored at hero bottom-right (compact) — always visible on first screen */
-  .hero-stats { bottom: 20px; right: 16px; gap: 0; }
-  .hero-stat { padding: 8px 10px; min-width: 0; }
-  .hero-stat .num { font-size: 17px; min-width: 4ch; }
-  .hero-stat .lbl { font-size: 8px; letter-spacing: 0.1em; margin-top: 2px; }
+  .hero-content { padding: 0 20px; padding-right: 110px; max-width: 100%; }
+  .hero h1 { font-size: 30px; line-height: 1.05; }
+  .hero p { font-size: 13px; line-height: 1.6; margin-bottom: 24px; max-width: 100%; }
+  .hero-tag { font-size: 9px; padding: 5px 10px; margin-bottom: 20px; letter-spacing: 0.18em; }
+  /* Stats: narrow vertical column on right side, vertically centered via top/bottom + margin auto.
+     Avoid transform-based centering — would conflict with GSAP initial transform: translateY(20px). */
+  .hero-stats {
+    top: 80px; bottom: 24px; right: 12px;
+    flex-direction: column;
+    gap: 4px;
+    height: fit-content;
+    margin: auto 0;
+  }
+  .hero-stat { padding: 8px 10px; min-width: 0; width: 92px; text-align: center; }
+  .hero-stat .num { font-size: 16px; min-width: 4ch; }
+  .hero-stat .lbl { font-size: 7px; letter-spacing: 0.08em; margin-top: 2px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
   .reviews-track { grid-template-columns: 1fr; }
@@ -547,6 +555,5 @@ footer {
   .hero-ctas { flex-direction: column; }
   .clubs-grid { grid-template-columns: 1fr; }
   .clubs-tabs { overflow-x: auto; }
-  .hero-stats { flex-direction: column; }
-  .hero-stat { width: 100%; }
+  /* .hero-stats / .hero-stat overrides removed — the 768px column layout already applies */
 }
