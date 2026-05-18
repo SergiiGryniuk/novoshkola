@@ -585,14 +585,14 @@ footer {
   .award-text { font-size: 17px; line-height: 1.6; }
   .review-name { font-size: 17px; }
   .review-role { font-size: 17px; }
-  .footer-links a { font-size: 17px; }
+  .footer-col a { font-size: 17px; }
   .footer-brand p { font-size: 17px; line-height: 1.65; }
   .footer-bottom p { font-size: 17px; }
   .club-name { font-size: 17px; }
   .enrol-link { font-size: 17px; }
   .club-cat { font-size: 13px; }
   .news-date { font-size: 13px; }
-  .footer-title { font-size: 13px; }
+  .footer-col h4 { font-size: 13px; }
   .cta-sub { margin-bottom: 32px; }
   .news-card.in-view .news-thumb img {
     filter: saturate(1) brightness(1);
