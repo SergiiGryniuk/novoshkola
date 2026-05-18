@@ -266,6 +266,10 @@ section { padding: 120px 48px; }
   font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--green); margin-bottom: 8px; display: block;
 }
+.club-icon {
+  color: var(--green); font-size: 28px;
+  display: block; margin-bottom: 10px;
+}
 .club-name {
   font-family: var(--font-display); font-size: 17px; font-weight: 500;
   color: var(--text); line-height: 1.2; margin-bottom: 8px;
