@@ -522,11 +522,14 @@ footer {
   .hamburger { display: flex; }
   header { padding: 16px 20px; }
   header.scrolled { padding: 12px 20px; }
-  .hero { flex-direction: column; align-items: flex-start; justify-content: flex-start; padding-top: 120px; height: auto; min-height: 100vh; }
   .hero-content { padding: 0 20px; max-width: 100%; }
-  .hero h1 { font-size: 42px; }
-  .hero-stats { position: relative; bottom: auto; right: auto; flex-direction: row; flex-wrap: wrap; margin-top: 40px; }
-  .hero-stat { flex: 1; min-width: 120px; }
+  .hero h1 { font-size: 36px; }
+  .hero p { font-size: 15px; margin-bottom: 32px; max-width: 92%; }
+  /* Stats stay anchored at hero bottom-right (compact) — always visible on first screen */
+  .hero-stats { bottom: 20px; right: 16px; gap: 0; }
+  .hero-stat { padding: 8px 10px; min-width: 0; }
+  .hero-stat .num { font-size: 17px; min-width: 4ch; }
+  .hero-stat .lbl { font-size: 8px; letter-spacing: 0.1em; margin-top: 2px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
   .reviews-track { grid-template-columns: 1fr; }
