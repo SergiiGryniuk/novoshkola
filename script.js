@@ -16,6 +16,7 @@ tl.to("#heroTag",   { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" })
 
 // HERO COUNT-UP
 function countUp(el, target, duration) {
+  if (!target || isNaN(target)) return;
   const suffix = el.dataset.suffix || '';
   let start = 0;
   const step = target / (duration / 16);
