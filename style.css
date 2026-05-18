@@ -501,6 +501,9 @@ footer {
   .hero-stat .lbl { font-size: 9px; letter-spacing: 0.12em; margin-top: 3px; }
   section { padding: 64px 20px; }
   .stats-bar { padding: 48px 20px; grid-template-columns: repeat(2,1fr); }
+  .stat-num { font-size: 32px; }
+  .stat-plus { font-size: 22px; }
+  .stat-item { padding: 20px 12px; }
   .reviews-track { grid-template-columns: 1fr; }
   .news-grid { grid-template-columns: 1fr; }
   .enrolment-grid { grid-template-columns: 1fr; }
