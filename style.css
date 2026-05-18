@@ -210,7 +210,7 @@ section { padding: 120px 48px; }
 }
 .about-photo.is-revealed img { transform: scale(1); }
 .about-photo:hover img { transform: scale(1.04); }
-.about-photo--main { grid-column: 1 / -1; height: 320px; }
+.about-photo--main { grid-column: 1 / -1; height: 420px; }
 .about-photo--main img { object-position: center center; }
 .about-photo { height: auto; }
 .about-photo::after {
