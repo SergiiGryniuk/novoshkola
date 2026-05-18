@@ -199,7 +199,7 @@ section { padding: 120px 48px; }
 /* STATS BAR */
 .stats-bar {
   padding: 64px 48px;
-  background: linear-gradient(180deg, #f8f9fa 0%, #e8edf2 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   border-top: 1px solid var(--green-line);
   border-bottom: 1px solid var(--green-line);
   display: grid; grid-template-columns: repeat(4, 1fr);
@@ -292,7 +292,7 @@ section { padding: 120px 48px; }
   gap: 16px;
 }
 .club-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f4f8 100%); border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 100%); border: 1px solid transparent;
   border-radius: var(--radius); padding: 24px;
   transition: border-color 0.25s, transform 0.25s, background 0.25s;
   cursor: default;
