@@ -576,10 +576,10 @@ footer {
     text-align: center;
     padding: 14px 24px;
   }
-  .enrol-desc { font-size: 15px; line-height: 1.65; }
-  .club-grades { font-size: 15px; line-height: 1.65; }
-  .review-text { font-size: 15px; line-height: 1.65; }
-  .news-excerpt { font-size: 15px; line-height: 1.65; }
+  .enrol-desc { font-size: 16px; line-height: 1.65; }
+  .club-grades { font-size: 16px; line-height: 1.65; }
+  .review-text { font-size: 16px; line-height: 1.65; }
+  .news-excerpt { font-size: 16px; line-height: 1.65; }
   .cta-sub { margin-bottom: 32px; }
   .news-card.in-view .news-thumb img {
     filter: saturate(1) brightness(1);
