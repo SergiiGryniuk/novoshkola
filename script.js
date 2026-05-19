@@ -129,9 +129,21 @@ window.addEventListener('load', () => {
 });
 
 const scrollBtn = document.getElementById('scrollTop');
+let scrollTimer;
+
 window.addEventListener('scroll', () => {
-  scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  if (window.scrollY > 400) {
+    scrollBtn.classList.remove('visible');
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      scrollBtn.classList.add('visible');
+    }, 300);
+  } else {
+    scrollBtn.classList.remove('visible');
+    clearTimeout(scrollTimer);
+  }
 });
+
 scrollBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
