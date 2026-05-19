@@ -522,7 +522,9 @@ footer {
 /* MOBILE NAV */
 .hamburger {
   display: none; flex-direction: column; gap: 5px; cursor: pointer;
-  padding: 4px;
+  padding: 12px;
+  margin: -12px;
+  touch-action: manipulation;
 }
 .hamburger span {
   width: 24px; height: 1px; background: var(--text);
