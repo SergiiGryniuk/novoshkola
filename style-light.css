@@ -634,6 +634,13 @@ footer {
   .club-cat { font-size: 13px; }
   .news-date { font-size: 13px; }
   .footer-col h4 { font-size: 13px; }
+  .hero-ctas .btn-primary,
+  .hero-ctas .btn-outline {
+    width: auto;
+    align-self: flex-start;
+    padding: 14px 32px;
+    font-size: 13px;
+  }
   .cta-sub { margin-bottom: 32px; }
   .news-card.in-view .news-thumb img {
     filter: saturate(1) brightness(1);
