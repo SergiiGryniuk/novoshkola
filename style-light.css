@@ -537,8 +537,10 @@ footer {
 .mobile-menu a {
   font-family: var(--font-display); font-size: 32px; font-weight: 300;
   color: var(--text); text-decoration: none; transition: color 0.2s;
+  display: flex; align-items: center; gap: 10px;
 }
 .mobile-menu a:hover { color: var(--green); }
+.mobile-menu a .ph { color: var(--green); font-size: 20px; }
 .mobile-close {
   position: absolute; top: 24px; right: 24px;
   background: none; border: none; color: var(--text);
