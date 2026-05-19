@@ -547,6 +547,9 @@ footer {
   position: absolute; top: 24px; right: 24px;
   background: none; border: none; color: var(--text);
   font-size: 28px; cursor: pointer;
+  touch-action: manipulation;
+  padding: 12px;
+  margin: -12px;
 }
 
 /* FADE-UP ANIMATION CLASS */
