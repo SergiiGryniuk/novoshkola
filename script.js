@@ -81,11 +81,15 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
     document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
     btn.classList.add("active");
     document.getElementById("tab-" + btn.dataset.tab).classList.add("active");
-    // Re-trigger animations for newly shown cards
-    gsap.utils.toArray("#tab-" + btn.dataset.tab + " .fade-up").forEach((el, i) => {
-      gsap.fromTo(el, {opacity: 0, y: 30}, {
-        opacity: 1, y: 0, duration: 0.5,
-        ease: "power2.out", delay: i * 0.04
+    // Refresh ScrollTrigger positions, then animate visible cards immediately
+    ScrollTrigger.refresh();
+    const panelEls = gsap.utils.toArray("#tab-" + btn.dataset.tab + " .fade-up");
+    panelEls.forEach((el, i) => {
+      const rect = el.getBoundingClientRect();
+      const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+      gsap.fromTo(el, {opacity: 0, y: inViewport ? 0 : 30}, {
+        opacity: 1, y: 0, duration: inViewport ? 0 : 0.5,
+        ease: "power2.out", delay: inViewport ? 0 : i * 0.04
       });
     });
   });
