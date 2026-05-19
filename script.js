@@ -1,13 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 ScrollTrigger.config({ ignoreMobileResize: true });
 
-const heroVideo = document.getElementById('heroVideo');
-if (heroVideo) {
-  heroVideo.addEventListener('loadedmetadata', () => {
-    ScrollTrigger.refresh();
-  });
-}
-
 // HERO ANIMATIONS
 gsap.to("#heroVideo", {
   yPercent: 12, ease: "none",
