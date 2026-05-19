@@ -608,7 +608,7 @@ footer {
     transform: scale(1.03);
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 360px) {
   .hero-ctas { flex-direction: column; }
   .clubs-grid { grid-template-columns: 1fr; }
   .clubs-tabs { overflow-x: auto; }
