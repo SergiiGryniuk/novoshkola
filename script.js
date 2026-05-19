@@ -127,3 +127,11 @@ if (window.matchMedia("(max-width: 768px)").matches) {
 window.addEventListener('load', () => {
   ScrollTrigger.refresh();
 });
+
+const scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll', () => {
+  scrollBtn.classList.toggle('visible', window.scrollY > 400);
+});
+scrollBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
