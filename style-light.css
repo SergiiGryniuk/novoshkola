@@ -81,6 +81,21 @@ nav a:hover { color: var(--text-on-dark); }
 nav a:hover::after { width: 100%; }
 header.scrolled nav a { color: var(--text-dim); }
 header.scrolled nav a:hover { color: var(--text); }
+nav span {
+  color: var(--text-on-dark-dim); text-decoration: none;
+  font-family: var(--font-body); font-size: 12px; letter-spacing: 0.1em;
+  text-transform: uppercase; font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+nav span::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
+  background: var(--green); transition: width 0.3s ease;
+}
+nav span:hover { color: var(--text-on-dark); }
+nav span:hover::after { width: 100%; }
+header.scrolled nav span { color: var(--text-dim); }
+header.scrolled nav span:hover { color: var(--text); }
 .nav-lang { color: var(--text-on-dark-muted); font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
 .nav-lang span { color: var(--green); }
 header.scrolled .nav-lang { color: var(--text-muted); }
@@ -545,6 +560,14 @@ footer {
 }
 .mobile-menu a:hover { color: var(--green); }
 .mobile-menu a .ph { color: var(--green); font-size: 20px; }
+.mobile-menu span {
+  font-family: var(--font-display); font-size: 32px; font-weight: 300;
+  color: var(--text); text-decoration: none; transition: color 0.2s;
+  display: flex; align-items: center; gap: 10px;
+  cursor: pointer;
+}
+.mobile-menu span:hover { color: var(--green); }
+.mobile-menu span .ph { color: var(--green); font-size: 20px; }
 .mobile-close {
   position: absolute; top: 24px; right: 24px;
   background: none; border: none; color: var(--text);
