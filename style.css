@@ -60,7 +60,7 @@ nav span:not(.nav-lang):not(.nav-lang-item):not(.btn-primary):not(.btn-outline):
   content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
   background: var(--green); transition: width 0.3s ease;
 }
-nav > span:hover { color: var(--text); }
+nav > span:not(.nav-lang):hover { color: var(--text); }
 nav span:not(.nav-lang):not(.nav-lang-item):not(.btn-primary):not(.btn-outline):hover::after { width: 100%; }
 .nav-lang { color: var(--text-muted); font-size: 12px; letter-spacing: 0.1em; cursor: default; }
 .nav-lang-item { color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
