@@ -63,7 +63,9 @@ nav span:not(.nav-lang)::after {
 nav span:hover { color: var(--text); }
 nav span:not(.nav-lang):hover::after { width: 100%; }
 .nav-lang { color: var(--text-muted); font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
-.nav-lang span { color: var(--green); }
+.nav-lang-item { color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+.nav-lang-item.active { color: var(--green); }
+.nav-lang-item:hover { color: var(--text); }
 .btn-primary {
   background: var(--green); color: #0C110D;
   padding: 10px 24px; border: none; border-radius: var(--radius);

@@ -97,7 +97,9 @@ nav span:not(.nav-lang):hover::after { width: 100%; }
 header.scrolled nav span { color: var(--text-dim); }
 header.scrolled nav span:hover { color: var(--text); }
 .nav-lang { color: var(--text-on-dark-muted); font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
-.nav-lang span { color: var(--green); }
+.nav-lang-item { color: var(--text-on-dark-muted); cursor: pointer; transition: color 0.2s; }
+.nav-lang-item.active { color: var(--green); }
+.nav-lang-item:hover { color: var(--text-on-dark); }
 header.scrolled .nav-lang { color: var(--text-muted); }
 .btn-primary {
   background: var(--green); color: #0C110D;
