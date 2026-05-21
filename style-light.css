@@ -570,6 +570,21 @@ footer {
 }
 .mobile-menu span:hover { color: var(--green); }
 .mobile-menu span .ph { color: var(--green); font-size: 20px; }
+.mobile-menu-lang {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--green-line);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+}
+.mobile-menu-lang .nav-lang-item {
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+}
 .mobile-close {
   position: absolute; top: 24px; right: 24px;
   background: none; border: none; color: var(--text);
