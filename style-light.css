@@ -88,12 +88,12 @@ nav span {
   transition: color 0.2s;
   position: relative;
 }
-nav span::after {
+nav span:not(.nav-lang)::after {
   content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px;
   background: var(--green); transition: width 0.3s ease;
 }
 nav span:hover { color: var(--text-on-dark); }
-nav span:hover::after { width: 100%; }
+nav span:not(.nav-lang):hover::after { width: 100%; }
 header.scrolled nav span { color: var(--text-dim); }
 header.scrolled nav span:hover { color: var(--text); }
 .nav-lang { color: var(--text-on-dark-muted); font-size: 12px; letter-spacing: 0.1em; cursor: pointer; }
