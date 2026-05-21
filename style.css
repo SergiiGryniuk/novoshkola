@@ -536,6 +536,7 @@ footer {
   gap: 8px;
   font-size: 14px;
   letter-spacing: 0.1em;
+  line-height: 1;
 }
 .mobile-menu-lang .nav-lang-item {
   font-size: 14px;
