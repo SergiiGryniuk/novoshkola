@@ -8,6 +8,7 @@
   var wide = window.matchMedia('(min-width: 1024px)').matches;
   var fine = window.matchMedia('(pointer: fine)').matches;
   html.classList.add('mo');
+  html.classList.add('mo-init'); /* no transitions while the hidden start states are applied */
   if (fine) html.classList.add('fine');
 
   /* Masked headlines: wrap each word so it can rise from under the line. */
@@ -86,6 +87,10 @@
     }
     requestAnimationFrame(step);
   }
+
+  /* Apply the start states without transitions (a layout forced by another script may already have styled the page). */
+  void document.body.offsetWidth;
+  html.classList.remove('mo-init');
 
   /* Reveal observer. */
   var io = new IntersectionObserver(function (entries) {

@@ -3,6 +3,7 @@
    without prefers-reduced-motion. Without JS or with reduced motion the page is static and fully visible. */
 
 html.mo { --v: 0ms; }
+html.mo-init *, html.mo-init *::before, html.mo-init *::after { transition: none !important; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 /* ---- Reveal primitives ---- */
