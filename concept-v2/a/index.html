@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../motion.css">
+<style>:root{--cur:#7859C0}</style>
 </head>
 <body>
 
@@ -64,28 +66,28 @@
 <section class="hero">
   <div class="wrap hero__in">
     <div class="hero__text">
-      <h1>Школа, до якої біжать зранку</h1>
-      <p class="lead">Приватна школа в Києві: від дошкільної підготовки до 11 класу, українська й канадська програми, понад тридцять гуртків після уроків.</p>
-      <div class="actions">
+      <h1 data-mo="mask" data-mo-delay="120">Школа, до якої біжать зранку</h1>
+      <p class="lead" data-mo="up" data-mo-delay="480">Приватна школа в Києві: від дошкільної підготовки до 11 класу, українська й канадська програми, понад тридцять гуртків після уроків.</p>
+      <div class="actions" data-mo="up" data-mo-delay="620">
         <a class="btn btn--primary" href="#visit">Записатись на екскурсію</a>
         <a class="btn btn--ghost" href="#">Вступ 2026/2027</a>
       </div>
     </div>
-    <div class="hero__media">
-      <div class="panel panel--purple" aria-hidden="true"></div>
-      <div class="panel panel--yellow" aria-hidden="true"></div>
-      <div class="panel panel--red" aria-hidden="true"></div>
+    <div class="hero__media" data-mo="media" data-mo-delay="250">
+      <div class="panel panel--purple" aria-hidden="true" data-rotate="0.012"></div>
+      <div class="panel panel--yellow" aria-hidden="true" data-rotate="-0.018"></div>
+      <div class="panel panel--red" aria-hidden="true" data-rotate="0.03"></div>
       <div class="hero__video">
         <video muted loop playsinline preload="none" poster="poster.jpg" width="854" height="480" data-src="../../video/hero-video.mp4"></video>
         <button class="video-toggle" type="button" aria-pressed="false" hidden>Пауза</button>
       </div>
     </div>
   </div>
-  <ul class="facts wrap" aria-label="Школа в цифрах">
-    <li class="facts__i facts__i--green"><strong>540</strong><span>учнів</span></li>
-    <li class="facts__i facts__i--purple"><strong>120</strong><span>вчителів</span></li>
-    <li class="facts__i facts__i--yellow"><strong>9&nbsp;585&nbsp;м²</strong><span>власний кампус</span></li>
-    <li class="facts__i facts__i--red"><strong>30+</strong><span>гуртків після уроків</span></li>
+  <ul class="facts wrap" aria-label="Школа в цифрах" data-mo-stagger="110" data-mo-kind="flip">
+    <li class="facts__i facts__i--green"><strong data-count>540</strong><span>учнів</span></li>
+    <li class="facts__i facts__i--purple"><strong data-count>120</strong><span>вчителів</span></li>
+    <li class="facts__i facts__i--yellow"><strong data-count>9&nbsp;585&nbsp;м²</strong><span>власний кампус</span></li>
+    <li class="facts__i facts__i--red"><strong data-count>30+</strong><span>гуртків після уроків</span></li>
   </ul>
 </section>
 
@@ -93,10 +95,10 @@
 <section class="sec" id="study">
   <div class="wrap">
     <div class="sec__head">
-      <h2>Від дошкілля до випуску<br>в одній будівлі</h2>
-      <p>Дитина росте, а школа лишається та сама: ті ж люди, та ж територія, той самий ритм дня.</p>
+      <h2 data-mo="mask">Від дошкілля до випуску<br>в одній будівлі</h2>
+      <p data-mo="up" data-mo-delay="150">Дитина росте, а школа лишається та сама: ті ж люди, та ж територія, той самий ритм дня.</p>
     </div>
-    <div class="rail" data-rail>
+    <div class="rail" data-rail data-mo-stagger="90" data-mo-kind="pop">
       <a class="prog prog--green" href="#">
         <span class="prog__age">Дошкілля</span>
         <h3>Дошкільна підготовка</h3>
@@ -125,11 +127,11 @@
 <section class="sec sec--alumni" id="alumni">
   <div class="wrap">
     <div class="sec__head sec__head--row">
-      <h2>Випуск — не кінець, а початок клубу</h2>
-      <p>Одинадцять випусків. Випускники навчаються в Канаді, США та Україні. Клуб випускників має повернути їх до школи — уже як менторів.</p>
+      <h2 data-mo="mask">Випуск — не кінець, а початок клубу</h2>
+      <p data-mo="up" data-mo-delay="150">Одинадцять випусків. Випускники навчаються в Канаді, США та Україні. Клуб випускників має повернути їх до школи — уже як менторів.</p>
     </div>
 
-    <div class="people">
+    <div class="people" data-mo-stagger="110">
       <article class="person">
         <img src="../../img/Ovcharenko.jpg" width="172" height="172" alt="Григорій Овчаренко" loading="lazy">
         <h3>Григорій Овчаренко</h3>
@@ -150,7 +152,7 @@
       </article>
     </div>
 
-    <div class="club">
+    <div class="club" data-mo="up">
       <div class="club__text">
         <h3>Клуб випускників</h3>
         <p>Спільнота школи лишається з дитиною і після випускного.</p>
@@ -163,7 +165,7 @@
         <p class="note">Концепт. Формат клубу школа ще визначає.</p>
       </div>
       <div class="club__nums" aria-label="Випускники в цифрах (дані уточнюються)">
-        <div><strong>11</strong><span>випусків</span></div>
+        <div><strong data-count>11</strong><span>випусків</span></div>
         <div><strong>00</strong><span>випускників у клубі</span></div>
         <div><strong>00</strong><span>університетів у 0 країнах</span></div>
       </div>
@@ -175,10 +177,10 @@
 <section class="sec" id="campus">
   <div class="wrap">
     <div class="sec__head">
-      <h2>Кампус, який проєктували для дітей</h2>
-      <p>9 585 м² будівлі, 3 426 м² зеленої території під охороною, стадіон і сертифіковане укриття на 500 м². Інтер’єр відзначено премією IIDA Global Excellence Awards і гран-прі Inter’year.</p>
+      <h2 data-mo="mask">Кампус, який проєктували для дітей</h2>
+      <p data-mo="up" data-mo-delay="150">9 585 м² будівлі, 3 426 м² зеленої території під охороною, стадіон і сертифіковане укриття на 500 м². Інтер’єр відзначено премією IIDA Global Excellence Awards і гран-прі Inter’year.</p>
     </div>
-    <div class="mosaic">
+    <div class="mosaic" data-mo-stagger="90" data-mo-kind="pop">
       <figure class="mosaic__big">
         <img src="../../img/image2.jpg" width="1400" height="933" alt="Внутрішній двір школи у день знань" loading="lazy">
         <figcaption>Внутрішній двір</figcaption>
@@ -207,25 +209,25 @@
 <section class="sec sec--clubs" id="clubs">
   <div class="wrap">
     <div class="sec__head sec__head--row">
-      <h2>Після уроків день не закінчується</h2>
-      <p>Понад тридцять гуртків на території школи. Дитина обирає, батьки не возять.</p>
+      <h2 data-mo="mask">Після уроків день не закінчується</h2>
+      <p data-mo="up" data-mo-delay="150">Понад тридцять гуртків на території школи. Дитина обирає, батьки не возять.</p>
     </div>
-    <div class="chips-grid">
+    <div class="chips-grid" data-mo-stagger="120">
       <div class="chips">
-        <h3>Творчість</h3>
-        <ul>
+        <h3 data-mo="fade">Творчість</h3>
+        <ul data-mo-stagger="35" data-mo-kind="pop">
           <li>Живопис</li><li>Гончарство</li><li>Вокал</li><li>Гітара</li><li>Театральна студія</li><li>Фотографія</li><li>Кулінарія</li><li>Літературний клуб</li><li>Дебати</li><li>Fashion Studio</li>
         </ul>
       </div>
       <div class="chips">
-        <h3>Технології</h3>
-        <ul>
+        <h3 data-mo="fade">Технології</h3>
+        <ul data-mo-stagger="35" data-mo-kind="pop">
           <li>Робототехніка</li><li>Моделювання</li><li>3D-ручка</li><li>Техно-картон</li><li>Настільні ігри</li>
         </ul>
       </div>
       <div class="chips">
-        <h3>Спорт</h3>
-        <ul>
+        <h3 data-mo="fade">Спорт</h3>
+        <ul data-mo-stagger="35" data-mo-kind="pop">
           <li>Баскетбол</li><li>Футбол</li><li>Шахи</li><li>Бальні танці</li><li>Хіп-хоп</li><li>Черлідинг</li><li>Настільний теніс</li><li>Бадмінтон</li><li>Скелелазіння</li><li>Боротьба</li>
         </ul>
       </div>
@@ -238,9 +240,9 @@
 <section class="sec" id="voices">
   <div class="wrap">
     <div class="sec__head">
-      <h2>Голоси родин</h2>
+      <h2 data-mo="mask">Голоси родин</h2>
     </div>
-    <div class="quotes">
+    <div class="quotes" data-mo-stagger="140">
       <blockquote class="quote quote--green">
         <p>Четверо дітей нашої родини вже відвідують школу й дошкільну підготовку, і я не пригадаю жодного разу, коли б діти не мчали до школи. Хіба що в останній день канікул.</p>
         <footer>
@@ -263,10 +265,10 @@
 <section class="sec sec--news" id="news">
   <div class="wrap">
     <div class="sec__head sec__head--row">
-      <h2>Що відбувається в школі</h2>
-      <a class="link" href="#">Усі новини</a>
+      <h2 data-mo="mask">Що відбувається в школі</h2>
+      <a class="link" data-mo="up" data-mo-delay="150" href="#">Усі новини</a>
     </div>
-    <div class="rail" data-rail>
+    <div class="rail" data-rail data-mo-stagger="110" data-mo-kind="pop">
       <a class="news" href="#">
         <img src="../../img/image14.jpg" width="480" height="270" alt="" loading="lazy">
         <time datetime="2026-10-09">9 жовтня 2026</time>
@@ -289,8 +291,8 @@
 <!-- Visit -->
 <section class="sec sec--visit" id="visit">
   <div class="wrap visit">
-    <h2 class="visit__title">Приходьте подивитись</h2>
-    <div class="visit__text">
+    <h2 class="visit__title" data-mo="mask">Приходьте подивитись</h2>
+    <div class="visit__text" data-mo="up" data-mo-delay="200">
       <p>Покажемо класи, бібліотеку, їдальню і спортзалу, відповімо на питання про вступ. Дітей беріть із собою.</p>
       <ol class="steps">
         <li>Екскурсія школою</li>
@@ -298,7 +300,7 @@
         <li>Договір і перший день</li>
       </ol>
     </div>
-    <form class="form" action="#" method="post" novalidate>
+    <form class="form" action="#" method="post" novalidate data-mo="up" data-mo-delay="120">
       <label>Ваше ім’я<input type="text" name="name" autocomplete="name" required></label>
       <label>Телефон<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
       <label>Клас або вік дитини<input type="text" name="grade" placeholder="Наприклад, 1 клас"></label>
@@ -351,5 +353,6 @@
 
 
 <script src="script.js" defer></script>
+<script src="../motion.js" defer></script>
 </body>
 </html>

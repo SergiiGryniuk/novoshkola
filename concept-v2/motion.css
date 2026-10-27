@@ -1,0 +1,87 @@
+/* Motion layer shared by concepts A and B.
+   Everything here is gated by html.mo, which motion.js adds only when
+   prefers-reduced-motion is not set. Without JS or with reduced motion the page is static and fully visible. */
+
+/* ---- Reveal on scroll ---- */
+html.mo [data-mo] {
+  --d: 0ms;
+  transition-property: opacity, translate, scale, transform, filter;
+  transition-duration: .8s;
+  transition-timing-function: cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--d);
+}
+html.mo [data-mo="up"]:not(.in)   { opacity: 0; translate: 0 36px; }
+html.mo [data-mo="fade"]:not(.in) { opacity: 0; }
+html.mo [data-mo="left"]:not(.in) { opacity: 0; translate: -32px 0; }
+html.mo [data-mo="pop"]:not(.in)  { opacity: 0; scale: .85; }
+html.mo [data-mo="flip"]:not(.in) { opacity: 0; transform: perspective(700px) rotateX(-40deg); transform-origin: 50% 100%; }
+html.mo [data-mo="zoom"] { transition-duration: 1.6s; }
+html.mo [data-mo="zoom"]:not(.in) { scale: 1.08; }
+
+/* ---- Masked headlines: words slide up from under an invisible line ---- */
+html.mo .mo-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .14em; margin-bottom: -.14em; }
+html.mo .mo-w > span { display: inline-block; translate: 0 112%; transition: translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--d, 0ms) + var(--i, 0) * 50ms); }
+html.mo [data-mo="mask"].in .mo-w > span { translate: 0 0; }
+html.mo [data-mo="mask"] { transition: none; }
+
+/* ---- Hero entrance (A): façade panels slide in, video window settles ---- */
+html.mo [data-mo="media"] .panel, html.mo [data-mo="media"] .hero__video { transition: opacity .9s cubic-bezier(.2,.7,.2,1), translate .9s cubic-bezier(.2,.7,.2,1), scale .9s cubic-bezier(.2,.7,.2,1); }
+html.mo [data-mo="media"]:not(.in) .panel--purple { opacity: 0; translate: -40px -40px; }
+html.mo [data-mo="media"]:not(.in) .panel--yellow { opacity: 0; translate: 40px 40px; transition-delay: .1s; }
+html.mo [data-mo="media"]:not(.in) .panel--red { opacity: 0; translate: 0 40px; transition-delay: .2s; }
+html.mo [data-mo="media"]:not(.in) .hero__video { opacity: 0; scale: .94; transition-delay: .15s; }
+/* after entrance the panels drift slowly; rotation comes from scroll (motion.js sets --rot) */
+html.mo [data-mo="media"].in .panel { rotate: var(--rot, 0deg); animation: mo-drift 9s ease-in-out infinite alternate; }
+html.mo [data-mo="media"].in .panel--yellow { animation-duration: 11s; animation-delay: -4s; }
+html.mo [data-mo="media"].in .panel--red { animation-duration: 7s; animation-delay: -2s; }
+@keyframes mo-drift { from { translate: 0 0; } to { translate: 0 -10px; } }
+
+/* ---- Parallax / scroll-driven (motion.js writes translate/rotate) ---- */
+html.mo [data-parallax] { will-change: translate; }
+
+/* ---- Hover motion (works without JS too) ---- */
+.mosaic img, .campus__hero img, .campus__grid img, .newslist img { transition: scale .7s cubic-bezier(.2,.7,.2,1), filter .4s; }
+.mosaic figure:hover img, .campus__grid figure:hover img, .newslist a:hover img { scale: 1.06; }
+.campus__grid figure { overflow: hidden; }
+.newslist a img { overflow: hidden; }
+.newslist li { overflow: hidden; }
+.news img { transition: filter .4s, translate .4s; }
+.news:hover img { filter: saturate(1.2) contrast(1.03); }
+.news, .prog, .person, .quote { transition: translate .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-top-width .25s; }
+.news:hover, .person:hover { translate: 0 -4px; }
+.prog:hover { transform: none; translate: 0 -5px; border-top-width: 18px; box-shadow: 0 18px 40px rgba(30,35,33,.08); }
+.btn { transition: background-color .15s, color .15s, border-color .15s, translate .2s, box-shadow .2s; }
+.btn--primary:hover, .btn--light:hover { translate: 0 -2px; box-shadow: 0 10px 24px rgba(30,35,33,.14); }
+.chips li { transition: background-color .2s, border-color .2s, translate .2s; }
+.chips li:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); translate: 0 -2px; }
+.index a { transition: translate .3s cubic-bezier(.2,.7,.2,1); }
+.index a:hover { translate: 10px 0; }
+.unis li { transition: padding-left .3s; }
+.unis li:hover { padding-left: 10px; }
+
+/* underline that draws from the left on hover */
+html.mo .link {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor), linear-gradient(var(--accent, var(--green)), var(--accent, var(--green)));
+  background-size: 0 2px, 100% 2px;
+  background-position: 0 100%, 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 3px;
+  transition: background-size .35s cubic-bezier(.2,.7,.2,1);
+}
+html.mo .link:hover { background-size: 100% 2px, 100% 2px; }
+
+/* header gets a shadow once the page is scrolled (A) */
+.top.is-scrolled { box-shadow: 0 8px 28px rgba(30,35,33,.07); }
+
+/* ---- Custom cursor (desktop with a mouse only) ---- */
+.cur { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; opacity: 0; transition: opacity .3s; }
+html.cur-on .cur { opacity: 1; }
+.cur__dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--cur, #1E2321); }
+.cur__ring { position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--cur, #1E2321); background: transparent; transition: scale .3s cubic-bezier(.2,.7,.2,1), background-color .3s, border-color .3s, opacity .3s; }
+.cur.is-link .cur__ring { scale: 1.7; background: color-mix(in srgb, var(--cur, #1E2321) 14%, transparent); }
+.cur.is-link .cur__dot { opacity: 0; }
+.cur.is-down .cur__ring { scale: .8; }
+.cur.is-text .cur__ring { opacity: 0; }
+html.cur-on, html.cur-on a, html.cur-on button, html.cur-on label { cursor: none; }
+html.cur-on input, html.cur-on textarea { cursor: text; }
