@@ -93,7 +93,7 @@ html.mo main[data-route] { position: relative; }
 [data-connect] .person img, [data-connect] .person__ph { position: relative; z-index: 3; }
 
 /* A: running line of clubs */
-.ticker { overflow: hidden; white-space: nowrap; margin: 4px 0 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.ticker { overflow: hidden; white-space: nowrap; margin: 4px calc(50% - 50vw) 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .ticker__in { display: inline-flex; align-items: center; }
 .ticker__in > span { display: inline-flex; align-items: center; font: 500 22px/1 var(--display, inherit); padding-right: 22px; color: rgba(255,255,255,.9); }
 .ticker__in > span::after { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 22px; background: var(--c, var(--green)); }
@@ -112,6 +112,7 @@ html.mo .theme-a .steps li { position: relative; }
 html.mo .theme-a .quote { position: relative; }
 html.mo .theme-a .quote::before { content: "“"; position: absolute; right: 18px; top: 2px; font: 500 96px/1 var(--display); color: var(--green); opacity: .28; scale: .4; transition: scale 1s cubic-bezier(.34,1.56,.64,1) .3s; }
 html.mo .theme-a .quote--purple::before { color: var(--purple); }
+html.mo .theme-a .quote p { padding-right: 52px; }
 html.mo .theme-a .quote.in::before { scale: 1; }
 
 /* ---- B: the album opens (once per session), the first photo breathes ---- */

@@ -20,10 +20,9 @@
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 
-  /* Header turns solid once the hero scrolls away. */
+  /* Header turns solid as soon as the page scrolls, so hero text never slides under a transparent bar. */
   var top = document.querySelector('.top');
-  var hero = document.querySelector('.hero');
-  function onScroll() { top.classList.toggle('is-solid', window.scrollY > hero.offsetHeight - 80); }
+  function onScroll() { top.classList.toggle('is-solid', window.scrollY > 48); }
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
