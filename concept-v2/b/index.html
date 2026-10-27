@@ -11,10 +11,12 @@
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="../motion.css">
 <style>:root{--cur:#15191B}</style>
-<script>document.documentElement.className += " js";</script>
+<script>document.documentElement.className += " js";
+try { if (!matchMedia("(prefers-reduced-motion: reduce)").matches && !sessionStorage.getItem("veil")) { document.documentElement.className += " veil-on"; sessionStorage.setItem("veil", "1"); } } catch (e) {}</script>
 </head>
-<body>
+<body class="theme-b">
 
+<div class="veil" aria-hidden="true"></div>
 <a class="skip" href="#main">До змісту</a>
 
 <header class="top" id="top">
@@ -65,13 +67,13 @@
 
 <!-- Hero -->
 <section class="hero">
-  <img class="hero__img" data-mo="zoom" data-parallax="0.35" data-parallax-hero src="../../img/image2.jpg" width="1400" height="933" alt="Будівля Новопечерської школи й внутрішній двір" fetchpriority="high">
+  <img class="hero__img" data-parallax="0.35" data-parallax-hero src="../../img/image2.jpg" width="1400" height="933" alt="Будівля Новопечерської школи й внутрішній двір" fetchpriority="high">
   <div class="hero__shade" aria-hidden="true"></div>
   <div class="wrap hero__in">
-    <p class="hero__kicker" data-mo="up" data-mo-delay="150">Приватна школа в Києві, з 2014 року</p>
+    <p class="hero__kicker" data-mo="focus" data-mo-delay="200">Приватна школа в Києві, з 2014 року</p>
     <h1 data-mo="mask" data-mo-delay="260">Дванадцять років, одна школа, одна спільнота</h1>
-    <p class="lead" data-mo="up" data-mo-delay="700">Від дошкільної підготовки до випуску в одному кампусі. Українська і канадська програми, тьютори в класах, тридцять гуртків після уроків.</p>
-    <div class="actions" data-mo="up" data-mo-delay="850">
+    <p class="lead" data-mo="focus" data-mo-delay="900">Від дошкільної підготовки до випуску в одному кампусі. Українська і канадська програми, тьютори в класах, тридцять гуртків після уроків.</p>
+    <div class="actions" data-mo="focus" data-mo-delay="1100">
       <a class="btn btn--primary" href="#visit">Записатись на екскурсію</a>
       <a class="btn btn--white" href="#">Вступ 2026/2027</a>
     </div>
@@ -81,12 +83,12 @@
 <!-- Statement + numbers -->
 <section class="sec intro">
   <div class="wrap intro__in">
-    <p class="statement" data-mo="up">Школа відкрилась у 2014 році й випустила одинадцять класів. Будівлю і територію проєктували під дітей: 9 585 м² простору, зелений двір під охороною, стадіон, бібліотека, майстерні та сертифіковане укриття.</p>
-    <dl class="nums" data-mo-stagger="120">
-      <div><dt>учнів</dt><dd data-count>540</dd></div>
-      <div><dt>вчителів</dt><dd data-count>120</dd></div>
-      <div><dt>випусків</dt><dd data-count>11</dd></div>
-      <div><dt>гуртків</dt><dd data-count>30+</dd></div>
+    <p class="statement" data-mo="focus">Школа відкрилась у 2014 році й випустила одинадцять класів. Будівлю і територію проєктували під дітей: 9 585 м² простору, зелений двір під охороною, стадіон, бібліотека, майстерні та сертифіковане укриття.</p>
+    <dl class="nums" data-mo-stagger="160" data-mo-kind="focus">
+      <div><dt>учнів</dt><dd data-count="roll">540</dd></div>
+      <div><dt>вчителів</dt><dd data-count="roll">120</dd></div>
+      <div><dt>випусків</dt><dd data-count="roll">11</dd></div>
+      <div><dt>гуртків</dt><dd data-count="roll">30+</dd></div>
     </dl>
   </div>
 </section>
@@ -95,7 +97,7 @@
 <section class="sec sec--tint" id="study">
   <div class="wrap">
     <h2 class="h2" data-mo="mask">Навчання</h2>
-    <ul class="index" data-mo-stagger="90">
+    <ul class="index" data-mo="fade" data-mo-stagger="140" data-mo-kind="rule">
       <li>
         <a href="#">
           <span class="index__age">Дошкілля</span>
@@ -133,9 +135,9 @@
   <div class="wrap alumni">
     <div class="alumni__head">
       <h2 class="h2" data-mo="mask">Випускники</h2>
-      <p data-mo="up" data-mo-delay="150">Куди вступають після Новопечерської. Список поповнюємо щороку.</p>
+      <p data-mo="focus" data-mo-delay="150">Куди вступають після Новопечерської. Список поповнюємо щороку.</p>
     </div>
-    <ul class="unis" data-mo-stagger="80" data-mo-kind="left">
+    <ul class="unis" data-mo="fade" data-mo-stagger="130" data-mo-kind="rule">
       <li><span>University of Toronto</span><small>Канада</small></li>
       <li><span>University of British Columbia</span><small>Канада</small></li>
       <li><span>University of Pennsylvania</span><small>США, зі стипендією</small></li>
@@ -144,17 +146,17 @@
       <li class="unis__ph"><span>Університет</span><small>країна</small></li>
     </ul>
 
-    <figure class="alumni__quote" data-mo="up">
+    <figure class="alumni__quote">
       <blockquote>
-        <p>Новопечерська навчила мене, що спільнота, в якій ти перебуваєш під час навчання, відіграє надважливу роль. Мої однокурсники розумні, амбітні й ініціативні, і в цій атмосфері хочеться постійно розвиватись. Як і в Новопечерській.</p>
+        <p data-mo="mask" data-mo-lines>Новопечерська навчила мене, що спільнота, в якій ти перебуваєш під час навчання, відіграє надважливу роль. Мої однокурсники розумні, амбітні й ініціативні, і в цій атмосфері хочеться постійно розвиватись. Як і в Новопечерській.</p>
       </blockquote>
-      <figcaption>
+      <figcaption data-mo="focus" data-mo-delay="500">
         <img src="../../img/Hilovyants.jpg" width="172" height="172" alt="" loading="lazy">
         <span><b>Кирило Гіловянц</b>, випуск 2020, КПІ</span>
       </figcaption>
     </figure>
 
-    <div class="club" data-mo="up" data-mo-delay="150">
+    <div class="club" data-mo="focus" data-mo-delay="150">
       <h3>Клуб випускників</h3>
       <p>Спільнота школи не закінчується випускним. Клуб об’єднує випускників різних років: зустрічі в школі, менторство для старшокласників, контакти для стажувань і спільних проєктів.</p>
       <a class="btn btn--line" href="#">Про клуб</a>
@@ -165,19 +167,19 @@
 
 <!-- Campus -->
 <section class="campus" id="campus">
-  <figure class="campus__hero" data-mo="fade">
+  <figure class="campus__hero" data-mo="curtain" data-cur="view">
     <img data-parallax="0.18" src="../../img/image8.jpg" width="1400" height="933" alt="Атріум школи з деревом і кріслами-мішками" loading="lazy">
   </figure>
   <div class="wrap campus__in">
-    <div class="campus__text" data-mo="up">
+    <div class="campus__text" data-mo="focus">
       <h2 class="h2" data-mo="mask">Кампус</h2>
       <p>Інтер’єр школи відзначено премією IIDA Global Excellence Awards у номінації «Освіта» і гран-прі конкурсу Inter’year. Зелена територія 3 426 м² охороняється по периметру; стадіон, баскетбольний майданчик і сертифіковане укриття на 500 м² — на території.</p>
       <a class="link" href="#">Інфраструктура школи</a>
     </div>
-    <div class="campus__grid" data-mo-stagger="110">
-      <figure><img src="../../img/image3.jpg" width="1400" height="644" alt="Бібліотека" loading="lazy"><figcaption>Бібліотека</figcaption></figure>
-      <figure><img src="../../img/image4.jpg" width="1920" height="688" alt="Спортивна зала зі скеледромом" loading="lazy"><figcaption>Спортивна зала</figcaption></figure>
-      <figure><img src="../../img/image5.jpg" width="1600" height="560" alt="Їдальня з власною кухнею" loading="lazy"><figcaption>Їдальня</figcaption></figure>
+    <div class="campus__grid" data-mo-stagger="160" data-mo-kind="fade">
+      <figure data-cur="view"><span class="ph" data-mo="curtain"><img src="../../img/image3.jpg" width="1400" height="644" alt="Бібліотека" loading="lazy"></span><figcaption data-mo="focus" data-mo-delay="500">Бібліотека</figcaption></figure>
+      <figure data-cur="view"><span class="ph" data-mo="curtain"><img src="../../img/image4.jpg" width="1920" height="688" alt="Спортивна зала зі скеледромом" loading="lazy"></span><figcaption data-mo="focus" data-mo-delay="500">Спортивна зала</figcaption></figure>
+      <figure data-cur="view"><span class="ph" data-mo="curtain"><img src="../../img/image5.jpg" width="1600" height="560" alt="Їдальня з власною кухнею" loading="lazy"></span><figcaption data-mo="focus" data-mo-delay="500">Їдальня</figcaption></figure>
     </div>
   </div>
 </section>
@@ -185,12 +187,12 @@
 <!-- Clubs -->
 <section class="sec sec--tint" id="clubs">
   <div class="wrap clubs">
-    <div class="clubs__head" data-mo="up">
+    <div class="clubs__head" data-mo="focus">
       <h2 class="h2" data-mo="mask">Після уроків</h2>
       <p>Понад тридцять гуртків на території школи, без переїздів містом.</p>
       <a class="link" href="#">Усі гуртки та розклад</a>
     </div>
-    <div class="clubs__cols" data-mo-stagger="120">
+    <div class="clubs__cols" data-mo-stagger="180" data-mo-kind="focus">
       <div>
         <h3>Творчість</h3>
         <p>Живопис, гончарство, вокал, гітара, театральна студія, фотографія, кулінарія, літературний клуб, дебати, Fashion Studio.</p>
@@ -210,11 +212,11 @@
 <!-- Family voice -->
 <section class="sec" id="voices">
   <div class="wrap">
-    <figure class="voice" data-mo="up">
+    <figure class="voice">
       <blockquote>
-        <p>Четверо дітей нашої родини вже відвідують школу й клас дошкільної підготовки, і я не пригадаю жодного разу, коли б діти не мчали до школи. Хіба що в останній день канікул.</p>
+        <p data-mo="mask" data-mo-lines>Четверо дітей нашої родини вже відвідують школу й клас дошкільної підготовки, і я не пригадаю жодного разу, коли б діти не мчали до школи. Хіба що в останній день канікул.</p>
       </blockquote>
-      <figcaption>
+      <figcaption data-mo="focus" data-mo-delay="600">
         <img src="../../img/Samusieva.jpeg" width="172" height="172" alt="" loading="lazy">
         <span><b>Оксана Самусєва</b>, мама учнів початкової, середньої школи та дошкільної підготовки</span>
       </figcaption>
@@ -230,10 +232,10 @@
       <h2 class="h2" data-mo="mask">Новини</h2>
       <a class="link" href="#">Усі новини</a>
     </div>
-    <ul class="newslist" data-mo-stagger="110">
+    <ul class="newslist" data-mo-stagger="150" data-mo-kind="rule">
       <li>
         <a href="#">
-          <img src="../../img/image14.jpg" width="480" height="270" alt="" loading="lazy">
+          <span class="ph" data-mo="curtain" data-cur="view"><img src="../../img/image14.jpg" width="480" height="270" alt="" loading="lazy"></span>
           <span class="newslist__body">
             <time datetime="2026-10-09">9 жовтня 2026</time>
             <span class="newslist__title">Учениці здобули призові місця на чемпіонаті світу з мажорет-спорту</span>
@@ -242,7 +244,7 @@
       </li>
       <li>
         <a href="#">
-          <img src="../../img/image10.jpg" width="480" height="270" alt="" loading="lazy">
+          <span class="ph" data-mo="curtain" data-cur="view"><img src="../../img/image10.jpg" width="480" height="270" alt="" loading="lazy"></span>
           <span class="newslist__body">
             <time datetime="2026-02-16">16 лютого 2026</time>
             <span class="newslist__title">Детективне розслідування на уроці хімії</span>
@@ -251,7 +253,7 @@
       </li>
       <li>
         <a href="#">
-          <img src="../../img/image13.jpg" width="480" height="270" alt="" loading="lazy">
+          <span class="ph" data-mo="curtain" data-cur="view"><img src="../../img/image13.jpg" width="480" height="270" alt="" loading="lazy"></span>
           <span class="newslist__body">
             <time datetime="2025-12-30">30 грудня 2025</time>
             <span class="newslist__title">NovoTimes: шкільна газета від учнів</span>
@@ -266,7 +268,7 @@
 <section class="sec visit" id="visit">
   <div class="wrap visit__in">
     <h2 class="h2 visit__title" data-mo="mask">Запишіться на екскурсію</h2>
-    <div class="visit__text" data-mo="up" data-mo-delay="200">
+    <div class="visit__text" data-mo="focus" data-mo-delay="200">
       <p>Покажемо класи, бібліотеку, їдальню і спортзалу, відповімо на питання про вступ і вартість. Дітей беріть із собою.</p>
       <ol class="steps">
         <li>Екскурсія школою</li>
@@ -274,7 +276,7 @@
         <li>Договір і перший день</li>
       </ol>
     </div>
-    <form class="form" action="#" method="post" novalidate data-mo="up" data-mo-delay="100">
+    <form class="form" action="#" method="post" novalidate data-mo="focus" data-mo-delay="100">
       <label>Ваше ім’я<input type="text" name="name" autocomplete="name" required></label>
       <label>Телефон<input type="tel" name="phone" autocomplete="tel" inputmode="tel" required></label>
       <label>Клас або вік дитини<input type="text" name="grade" placeholder="Наприклад, 1 клас"></label>

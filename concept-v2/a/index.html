@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../motion.css">
 <style>:root{--cur:#7859C0}</style>
 </head>
-<body>
+<body class="theme-a">
 
 <a class="skip" href="#main">До змісту</a>
 
@@ -60,7 +60,7 @@
   </div>
 </div>
 
-<main id="main">
+<main id="main" data-route>
 
 <!-- Hero -->
 <section class="hero">
@@ -73,7 +73,7 @@
         <a class="btn btn--ghost" href="#">Вступ 2026/2027</a>
       </div>
     </div>
-    <div class="hero__media" data-mo="media" data-mo-delay="250">
+    <div class="hero__media" data-mo="media" data-mo-delay="200">
       <div class="panel panel--purple" aria-hidden="true" data-rotate="0.012"></div>
       <div class="panel panel--yellow" aria-hidden="true" data-rotate="-0.018"></div>
       <div class="panel panel--red" aria-hidden="true" data-rotate="0.03"></div>
@@ -83,7 +83,7 @@
       </div>
     </div>
   </div>
-  <ul class="facts wrap" aria-label="Школа в цифрах" data-mo-stagger="110" data-mo-kind="flip">
+  <ul class="facts wrap" aria-label="Школа в цифрах" data-mo-stagger="120" data-mo-kind="drop">
     <li class="facts__i facts__i--green"><strong data-count>540</strong><span>учнів</span></li>
     <li class="facts__i facts__i--purple"><strong data-count>120</strong><span>вчителів</span></li>
     <li class="facts__i facts__i--yellow"><strong data-count>9&nbsp;585&nbsp;м²</strong><span>власний кампус</span></li>
@@ -92,7 +92,7 @@
 </section>
 
 <!-- Programs -->
-<section class="sec" id="study">
+<section class="sec" id="study" data-route-color="#87BB40">
   <div class="wrap">
     <div class="sec__head">
       <h2 data-mo="mask">Від дошкілля до випуску<br>в одній будівлі</h2>
@@ -124,14 +124,16 @@
 </section>
 
 <!-- Alumni -->
-<section class="sec sec--alumni" id="alumni">
+<section class="sec sec--alumni" id="alumni" data-route-color="#7859C0">
+  <i class="shape shape--yellow" style="right:4%;top:60px" data-rotate="0.05" aria-hidden="true"></i>
+  <i class="shape shape--red" style="left:3%;bottom:80px;width:48px;height:48px" data-rotate="-0.04" aria-hidden="true"></i>
   <div class="wrap">
     <div class="sec__head sec__head--row">
       <h2 data-mo="mask">Випуск — не кінець, а початок клубу</h2>
       <p data-mo="up" data-mo-delay="150">Одинадцять випусків. Випускники навчаються в Канаді, США та Україні. Клуб випускників має повернути їх до школи — уже як менторів.</p>
     </div>
 
-    <div class="people" data-mo-stagger="110">
+    <div class="people" data-mo="fade" data-mo-stagger="140" data-connect>
       <article class="person">
         <img src="../../img/Ovcharenko.jpg" width="172" height="172" alt="Григорій Овчаренко" loading="lazy">
         <h3>Григорій Овчаренко</h3>
@@ -152,7 +154,7 @@
       </article>
     </div>
 
-    <div class="club" data-mo="up">
+    <div class="club" data-mo="up" data-cur-color="#EEDF46">
       <div class="club__text">
         <h3>Клуб випускників</h3>
         <p>Спільнота школи лишається з дитиною і після випускного.</p>
@@ -174,30 +176,30 @@
 </section>
 
 <!-- Campus -->
-<section class="sec" id="campus">
+<section class="sec" id="campus" data-route-color="#EEDF46">
   <div class="wrap">
     <div class="sec__head">
       <h2 data-mo="mask">Кампус, який проєктували для дітей</h2>
       <p data-mo="up" data-mo-delay="150">9 585 м² будівлі, 3 426 м² зеленої території під охороною, стадіон і сертифіковане укриття на 500 м². Інтер’єр відзначено премією IIDA Global Excellence Awards і гран-прі Inter’year.</p>
     </div>
-    <div class="mosaic" data-mo-stagger="90" data-mo-kind="pop">
-      <figure class="mosaic__big">
+    <div class="mosaic" data-mo-stagger="140" data-mo-kind="wipe">
+      <figure class="mosaic__big" style="--wipe:var(--purple)" data-cur="view">
         <img src="../../img/image2.jpg" width="1400" height="933" alt="Внутрішній двір школи у день знань" loading="lazy">
         <figcaption>Внутрішній двір</figcaption>
       </figure>
-      <figure>
+      <figure style="--wipe:var(--yellow)" data-cur="view">
         <img src="../../img/image3.jpg" width="1400" height="644" alt="Бібліотека з круглими стелажами" loading="lazy">
         <figcaption>Бібліотека</figcaption>
       </figure>
-      <figure>
+      <figure style="--wipe:var(--green)" data-cur="view">
         <img src="../../img/image4.jpg" width="1920" height="688" alt="Спортивна зала зі скеледромом" loading="lazy">
         <figcaption>Спортзала і скеледром</figcaption>
       </figure>
-      <figure>
+      <figure style="--wipe:var(--red)" data-cur="view">
         <img src="../../img/image5.jpg" width="1600" height="560" alt="Їдальня з власною кухнею" loading="lazy">
         <figcaption>Їдальня з власною кухнею</figcaption>
       </figure>
-      <figure>
+      <figure style="--wipe:var(--yellow)" data-cur="view">
         <img src="../../img/image8.jpg" width="1400" height="933" alt="Атріум з деревом і кріслами-мішками" loading="lazy">
         <figcaption>Атріум</figcaption>
       </figure>
@@ -206,28 +208,29 @@
 </section>
 
 <!-- Clubs -->
-<section class="sec sec--clubs" id="clubs">
+<section class="sec sec--clubs" id="clubs" data-route-color="#D63B3C" data-cur-color="#87BB40">
   <div class="wrap">
     <div class="sec__head sec__head--row">
       <h2 data-mo="mask">Після уроків день не закінчується</h2>
       <p data-mo="up" data-mo-delay="150">Понад тридцять гуртків на території школи. Дитина обирає, батьки не возять.</p>
     </div>
+    <div class="ticker" aria-hidden="true"><div class="ticker__in"><span style="--c:var(--green)">Живопис</span><span style="--c:var(--yellow)">Гончарство</span><span style="--c:var(--purple)">Вокал</span><span style="--c:var(--red)">Гітара</span><span style="--c:var(--green)">Театральна студія</span><span style="--c:var(--yellow)">Фотографія</span><span style="--c:var(--purple)">Кулінарія</span><span style="--c:var(--red)">Літературний клуб</span><span style="--c:var(--green)">Дебати</span><span style="--c:var(--yellow)">Fashion Studio</span><span style="--c:var(--purple)">Робототехніка</span><span style="--c:var(--red)">Моделювання</span><span style="--c:var(--green)">3D-ручка</span><span style="--c:var(--yellow)">Техно-картон</span><span style="--c:var(--purple)">Настільні ігри</span><span style="--c:var(--red)">Баскетбол</span><span style="--c:var(--green)">Футбол</span><span style="--c:var(--yellow)">Шахи</span><span style="--c:var(--purple)">Бальні танці</span><span style="--c:var(--red)">Хіп-хоп</span><span style="--c:var(--green)">Черлідинг</span><span style="--c:var(--yellow)">Настільний теніс</span><span style="--c:var(--purple)">Бадмінтон</span><span style="--c:var(--red)">Скелелазіння</span><span style="--c:var(--green)">Боротьба</span><span style="--c:var(--green)">Живопис</span><span style="--c:var(--yellow)">Гончарство</span><span style="--c:var(--purple)">Вокал</span><span style="--c:var(--red)">Гітара</span><span style="--c:var(--green)">Театральна студія</span><span style="--c:var(--yellow)">Фотографія</span><span style="--c:var(--purple)">Кулінарія</span><span style="--c:var(--red)">Літературний клуб</span><span style="--c:var(--green)">Дебати</span><span style="--c:var(--yellow)">Fashion Studio</span><span style="--c:var(--purple)">Робототехніка</span><span style="--c:var(--red)">Моделювання</span><span style="--c:var(--green)">3D-ручка</span><span style="--c:var(--yellow)">Техно-картон</span><span style="--c:var(--purple)">Настільні ігри</span><span style="--c:var(--red)">Баскетбол</span><span style="--c:var(--green)">Футбол</span><span style="--c:var(--yellow)">Шахи</span><span style="--c:var(--purple)">Бальні танці</span><span style="--c:var(--red)">Хіп-хоп</span><span style="--c:var(--green)">Черлідинг</span><span style="--c:var(--yellow)">Настільний теніс</span><span style="--c:var(--purple)">Бадмінтон</span><span style="--c:var(--red)">Скелелазіння</span><span style="--c:var(--green)">Боротьба</span></div></div>
     <div class="chips-grid" data-mo-stagger="120">
       <div class="chips">
         <h3 data-mo="fade">Творчість</h3>
-        <ul data-mo-stagger="35" data-mo-kind="pop">
+        <ul data-mo-stagger="rand" data-mo-kind="pop">
           <li>Живопис</li><li>Гончарство</li><li>Вокал</li><li>Гітара</li><li>Театральна студія</li><li>Фотографія</li><li>Кулінарія</li><li>Літературний клуб</li><li>Дебати</li><li>Fashion Studio</li>
         </ul>
       </div>
       <div class="chips">
         <h3 data-mo="fade">Технології</h3>
-        <ul data-mo-stagger="35" data-mo-kind="pop">
+        <ul data-mo-stagger="rand" data-mo-kind="pop">
           <li>Робототехніка</li><li>Моделювання</li><li>3D-ручка</li><li>Техно-картон</li><li>Настільні ігри</li>
         </ul>
       </div>
       <div class="chips">
         <h3 data-mo="fade">Спорт</h3>
-        <ul data-mo-stagger="35" data-mo-kind="pop">
+        <ul data-mo-stagger="rand" data-mo-kind="pop">
           <li>Баскетбол</li><li>Футбол</li><li>Шахи</li><li>Бальні танці</li><li>Хіп-хоп</li><li>Черлідинг</li><li>Настільний теніс</li><li>Бадмінтон</li><li>Скелелазіння</li><li>Боротьба</li>
         </ul>
       </div>
@@ -237,7 +240,9 @@
 </section>
 
 <!-- Families -->
-<section class="sec" id="voices">
+<section class="sec" id="voices" data-route-color="#7859C0">
+  <i class="shape shape--purple" style="right:5%;top:40px;width:56px;height:56px" data-rotate="0.04" aria-hidden="true"></i>
+  <i class="shape shape--green" style="left:4%;bottom:40px" data-rotate="-0.03" aria-hidden="true"></i>
   <div class="wrap">
     <div class="sec__head">
       <h2 data-mo="mask">Голоси родин</h2>
@@ -262,7 +267,7 @@
 </section>
 
 <!-- News -->
-<section class="sec sec--news" id="news">
+<section class="sec sec--news" id="news" data-route-color="#EEDF46">
   <div class="wrap">
     <div class="sec__head sec__head--row">
       <h2 data-mo="mask">Що відбувається в школі</h2>
@@ -270,17 +275,17 @@
     </div>
     <div class="rail" data-rail data-mo-stagger="110" data-mo-kind="pop">
       <a class="news" href="#">
-        <img src="../../img/image14.jpg" width="480" height="270" alt="" loading="lazy">
+        <span class="wipe" data-mo="wipe" style="--wipe:var(--yellow)"><img src="../../img/image14.jpg" width="480" height="270" alt="" loading="lazy"></span>
         <time datetime="2026-10-09">9 жовтня 2026</time>
         <h3>Учениці здобули призові місця на чемпіонаті світу з мажорет-спорту</h3>
       </a>
       <a class="news" href="#">
-        <img src="../../img/image10.jpg" width="480" height="270" alt="" loading="lazy">
+        <span class="wipe" data-mo="wipe" style="--wipe:var(--purple)"><img src="../../img/image10.jpg" width="480" height="270" alt="" loading="lazy"></span>
         <time datetime="2026-02-16">16 лютого 2026</time>
         <h3>Детективне розслідування на уроці хімії</h3>
       </a>
       <a class="news" href="#">
-        <img src="../../img/image13.jpg" width="480" height="270" alt="" loading="lazy">
+        <span class="wipe" data-mo="wipe" style="--wipe:var(--green)"><img src="../../img/image13.jpg" width="480" height="270" alt="" loading="lazy"></span>
         <time datetime="2025-12-30">30 грудня 2025</time>
         <h3>NovoTimes: шкільна газета від учнів</h3>
       </a>
@@ -289,12 +294,12 @@
 </section>
 
 <!-- Visit -->
-<section class="sec sec--visit" id="visit">
+<section class="sec sec--visit" id="visit" data-route-color="#1E2321" data-cur-color="#1E2321">
   <div class="wrap visit">
     <h2 class="visit__title" data-mo="mask">Приходьте подивитись</h2>
     <div class="visit__text" data-mo="up" data-mo-delay="200">
       <p>Покажемо класи, бібліотеку, їдальню і спортзалу, відповімо на питання про вступ. Дітей беріть із собою.</p>
-      <ol class="steps">
+      <ol class="steps" data-mo="fade" data-mo-stagger="180" data-mo-kind="pop">
         <li>Екскурсія школою</li>
         <li>Співбесіда з дитиною</li>
         <li>Договір і перший день</li>

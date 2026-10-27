@@ -203,6 +203,7 @@ section[id], main[id] { scroll-margin-top: 72px; }
 .sec--news { background: var(--paper-2); }
 .news { display: block; text-decoration: none; }
 .news img { border-radius: var(--r-s); aspect-ratio: 16/9; object-fit: cover; width: 100%; }
+.news .wipe { border-radius: var(--r-s); }
 .news time { display: block; margin-top: 12px; font-size: 13px; color: var(--ink-3); }
 .news h3 { margin-top: 6px; font: 500 17px/1.35 var(--text); }
 .news:hover h3 { text-decoration: underline; text-underline-offset: 3px; }

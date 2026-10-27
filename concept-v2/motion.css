@@ -1,86 +1,184 @@
-/* Motion layer shared by concepts A and B.
-   Everything here is gated by html.mo, which motion.js adds only when
-   prefers-reduced-motion is not set. Without JS or with reduced motion the page is static and fully visible. */
+/* Motion layer shared by concepts A («Спільнота»: a path to a school that assembles itself) and
+   B («Спадщина»: a photo album that develops into focus). Gated by html.mo, which motion.js adds only
+   without prefers-reduced-motion. Without JS or with reduced motion the page is static and fully visible. */
 
-/* ---- Reveal on scroll ---- */
-html.mo [data-mo] {
-  --d: 0ms;
-  transition-property: opacity, translate, scale, transform, filter;
-  transition-duration: .8s;
-  transition-timing-function: cubic-bezier(.2, .7, .2, 1);
-  transition-delay: var(--d);
-}
-html.mo [data-mo="up"]:not(.in)   { opacity: 0; translate: 0 36px; }
-html.mo [data-mo="fade"]:not(.in) { opacity: 0; }
-html.mo [data-mo="left"]:not(.in) { opacity: 0; translate: -32px 0; }
-html.mo [data-mo="pop"]:not(.in)  { opacity: 0; scale: .85; }
-html.mo [data-mo="flip"]:not(.in) { opacity: 0; transform: perspective(700px) rotateX(-40deg); transform-origin: 50% 100%; }
-html.mo [data-mo="zoom"] { transition-duration: 1.6s; }
-html.mo [data-mo="zoom"]:not(.in) { scale: 1.08; }
+html.mo { --v: 0ms; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-/* ---- Masked headlines: words slide up from under an invisible line ---- */
-html.mo .mo-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: .14em; margin-bottom: -.14em; }
-html.mo .mo-w > span { display: inline-block; translate: 0 112%; transition: translate .8s cubic-bezier(.2, .7, .2, 1); transition-delay: calc(var(--d, 0ms) + var(--i, 0) * 50ms); }
+/* ---- Reveal primitives ---- */
+html.mo [data-mo] { --d: 0ms; transition-property: opacity, translate, scale, transform, filter, clip-path; transition-duration: .8s; transition-timing-function: cubic-bezier(.2,.7,.2,1); transition-delay: calc(var(--d) + var(--v)); }
+html.mo [data-mo="up"]:not(.in)    { opacity: 0; translate: 0 36px; }
+html.mo [data-mo="fade"]:not(.in)  { opacity: 0; }
+html.mo [data-mo="left"]:not(.in)  { opacity: 0; translate: -32px 0; }
+html.mo [data-mo="pop"]:not(.in)   { opacity: 0; scale: .85; }
+html.mo [data-mo="flip"]:not(.in)  { opacity: 0; transform: perspective(700px) rotateX(-40deg); transform-origin: 50% 100%; }
+/* A: blocks drop in and land with a bounce, like façade panels stacking */
+html.mo [data-mo="drop"] { transition-duration: .9s; transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
+html.mo [data-mo="drop"]:not(.in)  { opacity: 0; translate: 0 -56px; }
+/* A: portraits open like an iris once their card is in (driven by the card: Chrome's IntersectionObserver
+   never reports an element clipped to circle(0) as visible) */
+html.mo [data-connect] .person img, html.mo [data-connect] .person__ph { clip-path: circle(75% at 50% 50%); transition: clip-path 1.1s cubic-bezier(.2,.7,.2,1) calc(var(--d) + var(--v) + 250ms); }
+html.mo [data-connect] .person:not(.in) img, html.mo [data-connect] .person:not(.in) .person__ph { clip-path: circle(0% at 50% 50%); }
+/* B: text develops from blur into focus */
+html.mo [data-mo="focus"] { transition-duration: 1.2s; }
+html.mo [data-mo="focus"]:not(.in) { opacity: 0; filter: blur(10px); translate: 0 12px; }
+
+/* A: a façade-coloured panel slides off a photo. B: a paper sheet lifts off a photo. */
+html.mo [data-mo="wipe"], html.mo [data-mo="curtain"] { position: relative; overflow: hidden; display: block; transition: none; }
+html.mo [data-mo="wipe"]::after, html.mo [data-mo="curtain"]::after { content: ""; position: absolute; inset: -1px; z-index: 2; translate: 0 0; transition: translate 1s cubic-bezier(.7,0,.2,1) calc(var(--d) + var(--v)); }
+html.mo [data-mo="wipe"]::after { background: var(--wipe, var(--green, #87BB40)); }
+html.mo [data-mo="curtain"]::after { background: var(--paper-2, #F0F0EB); }
+html.mo [data-mo="wipe"].in::after { translate: 101% 0; }
+html.mo [data-mo="curtain"].in::after { translate: 0 -101%; }
+html.mo [data-mo="wipe"] img, html.mo [data-mo="curtain"] img { scale: 1.12; transition: scale 1.4s cubic-bezier(.2,.7,.2,1) calc(var(--d) + var(--v)), filter .8s; }
+html.mo [data-mo="wipe"].in img, html.mo [data-mo="curtain"].in img { scale: 1; }
+html.mo [data-mo="wipe"].in:hover img, html.mo [data-mo="curtain"].in:hover img, html.mo .campus__grid figure:hover [data-mo="curtain"].in img { scale: 1.06; }
+
+/* B: a chronicle rule draws left to right, then the row develops */
+html.mo [data-mo="rule"] { position: relative; border-bottom-color: transparent !important; transition: none; }
+html.mo [data-mo="rule"]::after { content: ""; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: var(--line, #DADBD4); transition: width .9s cubic-bezier(.2,.7,.2,1) calc(var(--d) + var(--v)); }
+html.mo [data-mo="rule"].in::after { width: 100%; }
+html.mo [data-mo="rule"] > * { opacity: 0; filter: blur(6px); transition: opacity 1s, filter 1s; transition-delay: calc(var(--d) + var(--v) + 280ms); }
+html.mo [data-mo="rule"].in > * { opacity: 1; filter: none; }
+
+/* ---- Masked headlines: words rise from under an invisible line ---- */
+html.mo .mo-w { display: inline-block; overflow: hidden; vertical-align: bottom; padding: .12em 0 .14em; margin: -.12em 0 -.14em; }
+html.mo .mo-w > span { display: inline-block; translate: 0 112%; transition: translate .8s cubic-bezier(.2,.7,.2,1), filter .9s; transition-delay: calc(var(--d, 0ms) + var(--v) + var(--i, 0) * 50ms); }
 html.mo [data-mo="mask"].in .mo-w > span { translate: 0 0; }
 html.mo [data-mo="mask"] { transition: none; }
+/* A: words run in with a little overshoot */
+html.mo .theme-a .mo-w > span { transition-timing-function: cubic-bezier(.34,1.35,.64,1); }
+/* B: words come slowly, out of blur; quotes by whole lines */
+html.mo .theme-b .mo-w > span { filter: blur(8px); transition-duration: 1.1s; }
+html.mo .theme-b [data-mo="mask"].in .mo-w > span { filter: none; }
+html.mo [data-mo-lines] .mo-w > span { transition-delay: calc(var(--d, 0ms) + var(--v) + var(--i, 0) * 120ms); }
 
-/* ---- Hero entrance (A): façade panels slide in, video window settles ---- */
-html.mo [data-mo="media"] .panel, html.mo [data-mo="media"] .hero__video { transition: opacity .9s cubic-bezier(.2,.7,.2,1), translate .9s cubic-bezier(.2,.7,.2,1), scale .9s cubic-bezier(.2,.7,.2,1); }
-html.mo [data-mo="media"]:not(.in) .panel--purple { opacity: 0; translate: -40px -40px; }
-html.mo [data-mo="media"]:not(.in) .panel--yellow { opacity: 0; translate: 40px 40px; transition-delay: .1s; }
-html.mo [data-mo="media"]:not(.in) .panel--red { opacity: 0; translate: 0 40px; transition-delay: .2s; }
-html.mo [data-mo="media"]:not(.in) .hero__video { opacity: 0; scale: .94; transition-delay: .15s; }
-/* after entrance the panels drift slowly; rotation comes from scroll (motion.js sets --rot) */
+/* ---- A: the façade assembles on the first screen ---- */
+html.mo [data-mo="media"] .panel { transition: opacity .9s, translate 1s cubic-bezier(.34,1.45,.64,1); }
+html.mo [data-mo="media"]:not(.in) .panel--purple { opacity: 0; translate: -120px -90px; }
+html.mo [data-mo="media"]:not(.in) .panel--yellow { opacity: 0; translate: 120px 90px; transition-delay: .12s; }
+html.mo [data-mo="media"]:not(.in) .panel--red { opacity: 0; translate: -40px 120px; transition-delay: .24s; }
+html.mo [data-mo="media"] .hero__video { clip-path: inset(0 0 0 0 round var(--r, 18px)); transition: clip-path 1.1s cubic-bezier(.7,0,.2,1) .45s, opacity .4s .45s; }
+html.mo [data-mo="media"]:not(.in) .hero__video { clip-path: inset(49% 0 49% 0 round var(--r, 18px)); opacity: 0; }
 html.mo [data-mo="media"].in .panel { rotate: var(--rot, 0deg); animation: mo-drift 9s ease-in-out infinite alternate; }
 html.mo [data-mo="media"].in .panel--yellow { animation-duration: 11s; animation-delay: -4s; }
 html.mo [data-mo="media"].in .panel--red { animation-duration: 7s; animation-delay: -2s; }
 @keyframes mo-drift { from { translate: 0 0; } to { translate: 0 -10px; } }
 
-/* ---- Parallax / scroll-driven (motion.js writes translate/rotate) ---- */
-html.mo [data-parallax] { will-change: translate; }
+/* A: scattered façade fragments in light sections */
+.shape { display: none; }
+html.mo .theme-a .sec--alumni, html.mo .theme-a #voices { position: relative; overflow: hidden; }
+html.mo .theme-a .sec--alumni > .wrap, html.mo .theme-a #voices > .wrap { position: relative; z-index: 1; }
+@media (min-width: 1024px) {
+  html.mo .shape { display: block; position: absolute; width: 72px; height: 72px; border-radius: 18px; z-index: 0; rotate: var(--rot, 0deg); animation: mo-drift 10s ease-in-out infinite alternate; }
+  html.mo .shape--yellow { background: var(--yellow); } html.mo .shape--purple { background: var(--purple); }
+  html.mo .shape--red { background: var(--red); } html.mo .shape--green { background: var(--green); }
+}
+
+/* A: the route — a line from the first CTA to the form, drawn by scrolling, with a runner ahead */
+html.mo main[data-route] { position: relative; }
+.route { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; z-index: 3; }
+.route path { fill: none; stroke: var(--line-strong, #9DA19A); stroke-width: 2; stroke-linecap: round; opacity: .55; }
+.route .dot { fill: var(--paper, #fff); stroke: var(--line-strong, #9DA19A); stroke-width: 2; transition: fill .35s, stroke .35s, r .35s; }
+.route .dot.lit { fill: var(--c); stroke: var(--c); }
+.route .runner { fill: var(--green, #87BB40); }
+
+/* A: alumni portraits joined by a line into a community */
+[data-connect] { position: relative; }
+.connect { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
+.connect path { fill: none; stroke: var(--purple, #7859C0); stroke-width: 2; stroke-dasharray: var(--L, 1000); stroke-dashoffset: var(--L, 1000); transition: stroke-dashoffset 1.8s cubic-bezier(.2,.7,.2,1) .6s; }
+.in .connect path { stroke-dashoffset: 0; }
+[data-connect] .person { z-index: 1; }
+[data-connect] .person img, [data-connect] .person__ph { position: relative; z-index: 3; }
+
+/* A: running line of clubs */
+.ticker { overflow: hidden; white-space: nowrap; margin: 4px 0 28px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.ticker__in { display: inline-flex; align-items: center; }
+.ticker__in > span { display: inline-flex; align-items: center; font: 500 22px/1 var(--display, inherit); padding-right: 22px; color: rgba(255,255,255,.9); }
+.ticker__in > span::after { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-left: 22px; background: var(--c, var(--green)); }
+html.mo .ticker__in { animation: mo-tick 48s linear infinite; }
+.ticker:hover .ticker__in { animation-play-state: paused; }
+@keyframes mo-tick { to { translate: -50% 0; } }
+@media (min-width: 768px) { .ticker__in > span { font-size: 30px; padding-right: 30px; } .ticker__in > span::after { margin-left: 30px; width: 10px; height: 10px; } }
+
+/* A: the route ends in three steps joined by a line */
+html.mo .theme-a .steps { position: relative; }
+html.mo .theme-a .steps::before { content: ""; position: absolute; left: 14px; top: 14px; bottom: 14px; width: 2px; background: var(--ink); scale: 1 0; transform-origin: 50% 0; transition: scale 1s cubic-bezier(.2,.7,.2,1) .5s; }
+html.mo .theme-a .steps.in::before { scale: 1 1; }
+html.mo .theme-a .steps li { position: relative; }
+
+/* A: big opening quote marks */
+html.mo .theme-a .quote { position: relative; }
+html.mo .theme-a .quote::before { content: "“"; position: absolute; right: 18px; top: 2px; font: 500 96px/1 var(--display); color: var(--green); opacity: .28; scale: .4; transition: scale 1s cubic-bezier(.34,1.56,.64,1) .3s; }
+html.mo .theme-a .quote--purple::before { color: var(--purple); }
+html.mo .theme-a .quote.in::before { scale: 1; }
+
+/* ---- B: the album opens (once per session), the first photo breathes ---- */
+.veil { display: none; }
+html.veil-on .veil { display: block; position: fixed; inset: 0; z-index: 2000; background: var(--paper, #FAFAF8); animation: mo-veil 1.1s cubic-bezier(.7,0,.2,1) .45s forwards; }
+@keyframes mo-veil { to { translate: 0 -100%; visibility: hidden; } }
+html.veil-on .hero { --v: 1000ms; }
+html.mo .theme-b .hero__img { animation: mo-kb 40s cubic-bezier(.25,.5,.3,1) var(--v) both; }
+@keyframes mo-kb { 0% { scale: 1.14; opacity: 0; } 1.5% { opacity: 1; } 25% { scale: 1; } 100% { scale: 1.06; } }
+html.mo .theme-b .campus__hero[data-mo="curtain"] img { scale: 1.24; }
+html.mo .theme-b .campus__hero[data-mo="curtain"].in img { scale: 1.12; }
+/* B: muted photos regain colour on hover */
+.theme-b .campus__grid img, .theme-b .newslist img { filter: saturate(.82); }
+.theme-b .campus__grid figure:hover img, .theme-b .newslist a:hover img { filter: saturate(1); }
+/* B: the header's chronicle rule */
+.theme-b .top::after { content: ""; position: absolute; left: 0; bottom: -1px; height: 1px; width: 0; background: var(--ink); transition: width .9s cubic-bezier(.2,.7,.2,1); }
+.theme-b .top.is-solid::after { width: 100%; }
+html.mo .theme-b .top.is-solid { border-bottom-color: transparent; }
+/* B: odometer digits */
+.od { display: inline-block; height: 1em; line-height: 1; overflow: hidden; vertical-align: top; }
+.od__col { display: flex; flex-direction: column; translate: 0 0; transition: translate 2s cubic-bezier(.2,.8,.2,1) calc(var(--d, 0ms) + var(--v) + var(--k, 0) * 140ms); }
+.od__col > span { display: block; height: 1em; }
+.in .od__col { translate: 0 calc(var(--n, 0) * -1em); }
 
 /* ---- Hover motion (works without JS too) ---- */
-.mosaic img, .campus__hero img, .campus__grid img, .newslist img { transition: scale .7s cubic-bezier(.2,.7,.2,1), filter .4s; }
-.mosaic figure:hover img, .campus__grid figure:hover img, .newslist a:hover img { scale: 1.06; }
+.mosaic img, .campus__hero img, .campus__grid img, .newslist img { transition: scale .7s cubic-bezier(.2,.7,.2,1), filter .6s; }
 .campus__grid figure { overflow: hidden; }
-.newslist a img { overflow: hidden; }
 .newslist li { overflow: hidden; }
-.news img { transition: filter .4s, translate .4s; }
+.news img { transition: filter .4s; }
 .news:hover img { filter: saturate(1.2) contrast(1.03); }
-.news, .prog, .person, .quote { transition: translate .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s, border-top-width .25s; }
+.news, .person, .quote { transition: translate .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s; }
 .news:hover, .person:hover { translate: 0 -4px; }
-.prog:hover { transform: none; translate: 0 -5px; border-top-width: 18px; box-shadow: 0 18px 40px rgba(30,35,33,.08); }
+/* A programs: the top stripe's colour pours down and fills the card */
+.prog { position: relative; overflow: hidden; isolation: isolate; transition: translate .35s cubic-bezier(.2,.7,.2,1), color .3s; }
+.prog > * { position: relative; z-index: 1; }
+.prog::before { content: ""; position: absolute; inset: 0; z-index: 0; background: var(--c, var(--paper-2)); translate: 0 -101%; transition: translate .5s cubic-bezier(.7,0,.2,1); }
+.prog--green { --c: var(--green); } .prog--yellow { --c: var(--yellow); } .prog--purple { --c: var(--purple); } .prog--red { --c: var(--red); }
+.prog:hover { transform: none; translate: 0 -5px; }
+.prog:hover::before { translate: 0 0; }
+.prog--purple:hover, .prog--red:hover { color: #fff; }
+.prog:hover p, .prog:hover .prog__age { color: inherit; transition: color .3s; }
 .btn { transition: background-color .15s, color .15s, border-color .15s, translate .2s, box-shadow .2s; }
 .btn--primary:hover, .btn--light:hover { translate: 0 -2px; box-shadow: 0 10px 24px rgba(30,35,33,.14); }
-.chips li { transition: background-color .2s, border-color .2s, translate .2s; }
-.chips li:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.6); translate: 0 -2px; }
+/* A: the primary button floods with light from the cursor point */
+html.mo.fine .theme-a .btn--primary { position: relative; overflow: hidden; isolation: isolate; }
+html.mo.fine .theme-a .btn--primary::before { content: ""; position: absolute; left: var(--x, 50%); top: var(--y, 50%); width: 24px; height: 24px; margin: -12px; border-radius: 50%; background: rgba(255,255,255,.38); scale: 0; transition: scale .55s cubic-bezier(.2,.7,.2,1); z-index: -1; }
+html.mo.fine .theme-a .btn--primary:hover::before { scale: 24; }
+.chips li { transition: background-color .2s, border-color .2s, translate .2s, color .2s; }
+.chips li:hover { background: var(--green); border-color: var(--green); color: var(--ink); translate: 0 -2px; }
 .index a { transition: translate .3s cubic-bezier(.2,.7,.2,1); }
 .index a:hover { translate: 10px 0; }
 .unis li { transition: padding-left .3s; }
 .unis li:hover { padding-left: 10px; }
-
-/* underline that draws from the left on hover */
-html.mo .link {
-  text-decoration: none;
-  background-image: linear-gradient(currentColor, currentColor), linear-gradient(var(--accent, var(--green)), var(--accent, var(--green)));
-  background-size: 0 2px, 100% 2px;
-  background-position: 0 100%, 0 100%;
-  background-repeat: no-repeat;
-  padding-bottom: 3px;
-  transition: background-size .35s cubic-bezier(.2,.7,.2,1);
-}
+html.mo .link { text-decoration: none; background-image: linear-gradient(currentColor, currentColor), linear-gradient(var(--accent, var(--green)), var(--accent, var(--green))); background-size: 0 2px, 100% 2px; background-position: 0 100%, 0 100%; background-repeat: no-repeat; padding-bottom: 3px; transition: background-size .35s cubic-bezier(.2,.7,.2,1); }
 html.mo .link:hover { background-size: 100% 2px, 100% 2px; }
-
-/* header gets a shadow once the page is scrolled (A) */
 .top.is-scrolled { box-shadow: 0 8px 28px rgba(30,35,33,.07); }
 
-/* ---- Custom cursor (desktop with a mouse only) ---- */
+/* ---- Custom cursor (desktop with a mouse) ---- */
 .cur { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; opacity: 0; transition: opacity .3s; }
 html.cur-on .cur { opacity: 1; }
-.cur__dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--cur, #1E2321); }
-.cur__ring { position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--cur, #1E2321); background: transparent; transition: scale .3s cubic-bezier(.2,.7,.2,1), background-color .3s, border-color .3s, opacity .3s; }
-.cur.is-link .cur__ring { scale: 1.7; background: color-mix(in srgb, var(--cur, #1E2321) 14%, transparent); }
+.cur__dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--cur, #1E2321); transition: background-color .3s; }
+.cur__ring { position: absolute; left: -18px; top: -18px; width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--cur, #1E2321); transition: scale .3s cubic-bezier(.2,.7,.2,1), background-color .3s, border-color .3s, opacity .3s; }
+.cur__ring::after { content: "+"; position: absolute; inset: 0; display: grid; place-content: center; font: 300 16px/1 system-ui, sans-serif; color: var(--cur, #1E2321); opacity: 0; transition: opacity .2s; }
+.cur.is-link .cur__ring { scale: 1.7; background: color-mix(in srgb, var(--cur, #1E2321) 16%, transparent); }
 .cur.is-link .cur__dot { opacity: 0; }
+.cur.is-view .cur__ring { scale: 2; background: rgba(255,255,255,.18); }
+.cur.is-view .cur__ring::after { opacity: 1; }
+.cur.is-view .cur__dot { opacity: 0; }
 .cur.is-down .cur__ring { scale: .8; }
 .cur.is-text .cur__ring { opacity: 0; }
 html.cur-on, html.cur-on a, html.cur-on button, html.cur-on label { cursor: none; }
