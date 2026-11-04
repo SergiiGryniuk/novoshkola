@@ -129,8 +129,8 @@
     geo(); window.addEventListener('resize', geo); window.addEventListener('load', geo);
   });
 
-  /* Route (A): a line down the left margin from the first CTA to the form, drawn by scrolling; a runner leads. */
-  /* Off by default since 04.11 (read as a template timeline on the margin); ?route brings it back for comparison. */
+  /* Route (A): a line beside the text, from the first CTA down into the first admission step, drawn by scrolling; a runner leads. */
+  /* Off in a/ since 04.11 (the first version lived on the margin and read as a template timeline); on in a-route/ (main[data-route]) and with ?route. */
   var main = document.querySelector('main[data-route]');
   if (!main && /[?&]route\b/.test(location.search) && document.body.classList.contains('theme-a')) main = document.querySelector('main');
   var route = null;
@@ -145,35 +145,40 @@
     });
     var runner = document.createElementNS(ns, 'circle'); runner.setAttribute('class', 'runner'); runner.setAttribute('r', 7); svg.appendChild(runner);
     main.appendChild(svg);
-    route = { h: 0, x: 0, y1: 0, y2: 0, L: 0, ys: [] };
+    route = { h: 0, w: 0, L: 0, ys: [], s: 0, e: 1 };
+    /* Layout coordinates (offset chain up to main): entrance transitions translate and scale the blocks, so client rects lie until they finish. */
+    var off = function (el) { var x = 0, y = 0, o = el; while (o && o !== main) { x += o.offsetLeft; y += o.offsetTop; o = o.offsetParent; } return { x: x, y: y, w: el.offsetWidth, h: el.offsetHeight }; };
     route.geo = function () {
-      var mb = main.getBoundingClientRect(), top = mb.top + window.scrollY;
-      var wrap = main.querySelector('.hero .wrap').getBoundingClientRect();
-      var margin = wrap.left - mb.left;
-      if (margin < 56) { svg.style.display = 'none'; route.h = main.scrollHeight; return; }
+      var top = main.getBoundingClientRect().top + window.scrollY;
+      var wrap = main.querySelector('.hero .wrap');
+      var content = off(wrap).x + parseFloat(getComputedStyle(wrap).paddingLeft);
+      var x = Math.round(content - 44);  /* a fixed distance from the text, not the middle of whatever margin is left */
+      route.h = main.scrollHeight; route.w = window.innerWidth;
+      if (x < 28) { svg.style.display = 'none'; route.L = 0; return; }
       svg.style.display = '';
-      var a = main.querySelector('.hero .actions').getBoundingClientRect();
-      var f = main.querySelector('#visit .form').getBoundingClientRect();
-      route.x = Math.round(margin / 2); route.y1 = a.bottom + window.scrollY - top + 28; route.y2 = f.top + window.scrollY - top + 24;
-      route.ys = secs.map(function (s) { var h = s.querySelector('h2') || s, r = h.getBoundingClientRect(); return r.top + r.height / 2 + window.scrollY - top; });
-      svg.setAttribute('width', route.x * 2 + 20); svg.setAttribute('height', main.scrollHeight);
-      svg.setAttribute('viewBox', '0 0 ' + (route.x * 2 + 20) + ' ' + main.scrollHeight);
-      line.setAttribute('d', 'M' + route.x + ' ' + route.y1 + ' V' + route.y2);
-      route.L = route.y2 - route.y1;
+      var a = off(main.querySelector('.hero .actions'));
+      var step = off(main.querySelector('#visit .steps li'));
+      var y1 = a.y + a.h + 28;
+      var ey = step.y + 14, ex = step.x + 14, R = 24;  /* centre of the first step's marker */
+      line.setAttribute('d', 'M' + x + ' ' + y1 + ' V' + (ey - R) + ' Q' + x + ' ' + ey + ' ' + (x + R) + ' ' + ey + ' H' + (ex - 20));
+      svg.setAttribute('width', ex + 20); svg.setAttribute('height', route.h); svg.setAttribute('viewBox', '0 0 ' + (ex + 20) + ' ' + route.h);
+      route.L = line.getTotalLength();
       line.style.strokeDasharray = route.L; line.style.strokeDashoffset = route.L;
-      dots.forEach(function (c, i) { c.setAttribute('cx', route.x); c.setAttribute('cy', route.ys[i]); });
-      runner.setAttribute('cx', route.x);
-      route.h = main.scrollHeight;
+      route.ys = secs.map(function (s) { var h = off(s.querySelector('h2') || s); return h.y + h.h / 2; });
+      dots.forEach(function (c, i) { c.setAttribute('cx', x); c.setAttribute('cy', route.ys[i]); });
+      var vh = window.innerHeight, maxY = Math.max(0, document.documentElement.scrollHeight - vh);
+      route.s = top + y1 - vh * .6;                         /* drawing starts when the CTA passes 60 % of the screen */
+      route.e = Math.min(top + ey - vh * .72, maxY - 1);    /* and ends when the first step is on screen, or at the end of the page */
+      if (route.e <= route.s) route.e = route.s + 1;
     };
     route.tick = function (y, vh) {
-      if (main.scrollHeight !== route.h) route.geo();
+      if (main.scrollHeight !== route.h || window.innerWidth !== route.w) route.geo();
       if (!route.L) return;
-      var top = main.getBoundingClientRect().top + y;
-      var p = Math.max(0, Math.min(1, (y + vh * .55 - top - route.y1) / route.L));
+      var p = Math.max(0, Math.min(1, (y - route.s) / (route.e - route.s)));
       line.style.strokeDashoffset = route.L * (1 - p);
-      var cy = route.y1 + route.L * p;
-      runner.setAttribute('cy', cy);
-      dots.forEach(function (c, i) { c.classList.toggle('lit', route.ys[i] <= cy + 4); });
+      var pt = line.getPointAtLength(route.L * p);
+      runner.setAttribute('cx', pt.x); runner.setAttribute('cy', pt.y);
+      dots.forEach(function (c, i) { c.classList.toggle('lit', route.ys[i] <= pt.y + 4); });
     };
     route.geo(); window.addEventListener('load', route.geo); window.addEventListener('resize', route.geo);
   }

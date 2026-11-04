@@ -92,13 +92,13 @@ html.mo .theme-a .sec--alumni > .wrap, html.mo .theme-a #voices > .wrap { positi
   html.mo .theme-a .club .shape--red, html.mo .theme-a .quotes .shape--green { left: -4px; }
 }
 
-/* A: the route — a line from the first CTA to the form, drawn by scrolling, with a runner ahead */
+/* A: the route — a line beside the text from the first CTA into the first admission step, drawn by scrolling, with a runner ahead (a-route/ only) */
 html.mo main[data-route] { position: relative; }
 .route { position: absolute; left: 0; top: 0; pointer-events: none; overflow: visible; z-index: 3; }
 .route path { fill: none; stroke: var(--line-strong, #9DA19A); stroke-width: 2; stroke-linecap: round; opacity: .55; }
 .route .dot { fill: var(--paper, #fff); stroke: var(--line-strong, #9DA19A); stroke-width: 2; transition: fill .35s, stroke .35s, r .35s; }
 .route .dot.lit { fill: var(--c); stroke: var(--c); }
-.route .runner { fill: var(--green, #87BB40); }
+.route .runner { fill: var(--green, #87BB40); stroke: var(--paper, #fff); stroke-width: 2; }  /* the white ring keeps it visible on the green section */
 
 /* A: alumni portraits joined by a line into a community */
 [data-connect] { position: relative; }
