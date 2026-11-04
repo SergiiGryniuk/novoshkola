@@ -106,7 +106,8 @@
   document.querySelectorAll('[data-mo]').forEach(function (el) { io.observe(el); });
   document.querySelectorAll('[data-count]').forEach(function (el) { if (!el.closest('[data-mo]')) io.observe(el); });
 
-  /* Connect (A): a line drawn through the alumni portraits once the block is on screen. Tablet and up. */
+  /* Connect (A): a line the alumni portraits hang from, drawn once the block is on screen. Tablet and up.
+     Runs along the top tangent of the portraits, not through their centres: a line across the middle of a row reads as a strike-through. */
   var connects = window.matchMedia('(min-width: 768px)').matches ? Array.prototype.slice.call(document.querySelectorAll('[data-connect]')) : [];
   connects.forEach(function (box) {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -115,8 +116,10 @@
     svg.appendChild(path); box.appendChild(svg);
     function geo() {
       var b = box.getBoundingClientRect(), d = '';
+      /* layout offsets (relative to the box), not client rects: the cards are still shifted down by their entrance transition when this runs */
       box.querySelectorAll('.person img, .person__ph').forEach(function (a, i) {
-        var r = a.getBoundingClientRect(), x = r.left + r.width / 2 - b.left, y = r.top + r.height / 2 - b.top;
+        var x = a.offsetWidth / 2, y = 1, o = a;
+        while (o && o !== box) { x += o.offsetLeft; y += o.offsetTop; o = o.offsetParent; }
         d += (i ? ' L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
       });
       svg.setAttribute('viewBox', '0 0 ' + b.width + ' ' + b.height);
