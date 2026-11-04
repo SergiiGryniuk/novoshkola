@@ -46,6 +46,7 @@
     var v = p.getAttribute('data-mo-stagger'), step = parseInt(v, 10) || 80;
     var kind = p.getAttribute('data-mo-kind') || 'up';
     Array.prototype.forEach.call(p.children, function (c, i) {
+      if (c.classList.contains('shape')) return; /* decorative panels move by scroll, not by reveal */
       if (!c.hasAttribute('data-mo')) c.setAttribute('data-mo', kind);
       c.style.setProperty('--d', (v === 'rand' ? Math.round(Math.random() * 520) : i * step) + 'ms');
     });
@@ -126,7 +127,9 @@
   });
 
   /* Route (A): a line down the left margin from the first CTA to the form, drawn by scrolling; a runner leads. */
+  /* Off by default since 04.11 (read as a template timeline on the margin); ?route brings it back for comparison. */
   var main = document.querySelector('main[data-route]');
+  if (!main && /[?&]route\b/.test(location.search) && document.body.classList.contains('theme-a')) main = document.querySelector('main');
   var route = null;
   if (main && wide) {
     var ns = 'http://www.w3.org/2000/svg';
@@ -149,7 +152,7 @@
       var a = main.querySelector('.hero .actions').getBoundingClientRect();
       var f = main.querySelector('#visit .form').getBoundingClientRect();
       route.x = Math.round(margin / 2); route.y1 = a.bottom + window.scrollY - top + 28; route.y2 = f.top + window.scrollY - top + 24;
-      route.ys = secs.map(function (s) { return s.getBoundingClientRect().top + window.scrollY - top + 64; });
+      route.ys = secs.map(function (s) { var h = s.querySelector('h2') || s, r = h.getBoundingClientRect(); return r.top + r.height / 2 + window.scrollY - top; });
       svg.setAttribute('width', route.x * 2 + 20); svg.setAttribute('height', main.scrollHeight);
       svg.setAttribute('viewBox', '0 0 ' + (route.x * 2 + 20) + ' ' + main.scrollHeight);
       line.setAttribute('d', 'M' + route.x + ' ' + route.y1 + ' V' + route.y2);
@@ -187,7 +190,12 @@
       if (el.hasAttribute('data-parallax-hero')) el.style.translate = '0 ' + (y * k).toFixed(1) + 'px';
       else el.style.translate = '0 ' + (-((box.top + box.height / 2 - vh / 2) / vh) * k * 100).toFixed(1) + 'px';
     });
-    shapes.forEach(function (el) { el.style.setProperty('--rot', (y * (parseFloat(el.getAttribute('data-rotate')) || .02)).toFixed(2) + 'deg'); });
+    shapes.forEach(function (el) {
+      var k = parseFloat(el.getAttribute('data-rotate')) || .02, base = y;
+      /* parallax panels turn around their resting angle as their block passes the middle of the screen */
+      if (el.hasAttribute('data-parallax')) { var pb = el.parentElement.getBoundingClientRect(); base = -(pb.top + pb.height / 2 - vh / 2); }
+      el.style.setProperty('--rot', (base * k).toFixed(2) + 'deg');
+    });
     if (route) route.tick(y, vh);
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }

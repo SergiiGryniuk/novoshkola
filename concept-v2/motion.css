@@ -14,8 +14,8 @@ html.mo [data-mo="left"]:not(.in)  { opacity: 0; translate: -32px 0; }
 html.mo [data-mo="pop"]:not(.in)   { opacity: 0; scale: .85; }
 html.mo [data-mo="flip"]:not(.in)  { opacity: 0; transform: perspective(700px) rotateX(-40deg); transform-origin: 50% 100%; }
 /* A: blocks drop in and land with a bounce, like façade panels stacking */
-html.mo [data-mo="drop"] { transition-duration: .9s; transition-timing-function: cubic-bezier(.34,1.56,.64,1); }
-html.mo [data-mo="drop"]:not(.in)  { opacity: 0; translate: 0 -56px; }
+html.mo [data-mo="drop"] { transition-duration: .9s; transition-timing-function: cubic-bezier(.2,.7,.2,1); }
+html.mo [data-mo="drop"]:not(.in)  { opacity: 0; translate: 0 -40px; }
 /* A: portraits open like an iris once their card is in (driven by the card: Chrome's IntersectionObserver
    never reports an element clipped to circle(0) as visible) */
 html.mo [data-connect] .person img, html.mo [data-connect] .person__ph { clip-path: circle(75% at 50% 50%); transition: clip-path 1.1s cubic-bezier(.2,.7,.2,1) calc(var(--d) + var(--v) + 250ms); }
@@ -48,14 +48,14 @@ html.mo .mo-w > span { display: inline-block; translate: 0 112%; transition: tra
 html.mo [data-mo="mask"].in .mo-w > span { translate: 0 0; }
 html.mo [data-mo="mask"] { transition: none; }
 /* A: words run in with a little overshoot */
-html.mo .theme-a .mo-w > span { transition-timing-function: cubic-bezier(.34,1.35,.64,1); }
+html.mo .theme-a .mo-w > span { transition-timing-function: cubic-bezier(.2,.8,.2,1); }
 /* B: words come slowly, out of blur; quotes by whole lines */
 html.mo .theme-b .mo-w > span { filter: blur(8px); transition-duration: 1.1s; }
 html.mo .theme-b [data-mo="mask"].in .mo-w > span { filter: none; }
 html.mo [data-mo-lines] .mo-w > span { transition-delay: calc(var(--d, 0ms) + var(--v) + var(--i, 0) * 120ms); }
 
 /* ---- A: the façade assembles on the first screen ---- */
-html.mo [data-mo="media"] .panel { transition: opacity .9s, translate 1s cubic-bezier(.34,1.45,.64,1); }
+html.mo [data-mo="media"] .panel { transition: opacity .9s, translate 1s cubic-bezier(.3,1.12,.4,1); }
 html.mo [data-mo="media"]:not(.in) .panel--purple { opacity: 0; translate: -120px -90px; }
 html.mo [data-mo="media"]:not(.in) .panel--yellow { opacity: 0; translate: 120px 90px; transition-delay: .12s; }
 html.mo [data-mo="media"]:not(.in) .panel--red { opacity: 0; translate: -40px 120px; transition-delay: .24s; }
@@ -71,9 +71,25 @@ html.mo [data-mo="media"].in .panel--red { animation-duration: 7s; animation-del
 html.mo .theme-a .sec--alumni, html.mo .theme-a #voices { position: relative; overflow: hidden; }
 html.mo .theme-a .sec--alumni > .wrap, html.mo .theme-a #voices > .wrap { position: relative; z-index: 1; }
 @media (min-width: 1024px) {
-  html.mo .shape { display: block; position: absolute; width: 72px; height: 72px; border-radius: 18px; z-index: 0; rotate: var(--rot, 0deg); animation: mo-drift 10s ease-in-out infinite alternate; }
+  /* Moved only by scrolling: parallax (data-parallax, slower or faster than the page) and a slow turn (data-rotate). No idle drift. */
+  html.mo .shape { display: block; position: absolute; width: 96px; height: 96px; border-radius: 24px; z-index: -1; rotate: var(--rot, 0deg); }
+  /* the panels they peek out from stack above them; sideways peek only where the margin has room */
+  html.mo .theme-a .club, html.mo .theme-a .quotes { position: relative; isolation: isolate; }
+  html.mo .theme-a .club .shape--yellow { right: -28px; bottom: -48px; }
+  html.mo .theme-a .club .shape--red { left: -24px; bottom: -30px; }
+  html.mo .theme-a .quotes .shape--purple { right: -30px; top: -44px; }
+  html.mo .theme-a .quotes .shape--green { left: -36px; bottom: -48px; }
+}
+@media (min-width: 1024px) {
+  html.mo .shape--s { width: 64px; height: 64px; border-radius: 16px; }
+  html.mo .shape--m { width: 112px; height: 112px; border-radius: 28px; }
+  html.mo .shape--l { width: 144px; height: 144px; border-radius: 34px; }
   html.mo .shape--yellow { background: var(--yellow); } html.mo .shape--purple { background: var(--purple); }
   html.mo .shape--red { background: var(--red); } html.mo .shape--green { background: var(--green); }
+}
+@media (min-width: 1024px) and (max-width: 1399px) {
+  html.mo .theme-a .club .shape--yellow, html.mo .theme-a .quotes .shape--purple { right: -4px; }
+  html.mo .theme-a .club .shape--red, html.mo .theme-a .quotes .shape--green { left: -4px; }
 }
 
 /* A: the route — a line from the first CTA to the form, drawn by scrolling, with a runner ahead */
